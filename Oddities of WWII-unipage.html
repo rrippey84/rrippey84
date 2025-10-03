@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oddities of WWII</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Trebuchet MS', 'Arial', sans-serif;
+            line-height: 1.6;
+            background: #2d3e2a;
+            color: #f0f0f0;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        
+        
+        
+        
+        /* Header */
+        .header {
+            background: #1a2518;
+            color: #e8f0e5;
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        /* Navigation */
+        .nav {
+            background: #4a5c47;
+            padding: 15px 0;
+        }
+        
+        .nav-items {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-item {
+            color: #e8f0e5;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background 0.3s;
+            cursor: pointer;
+            border: 1px dashed #7a8471;
+        }
+        
+        .nav-item:hover {
+            background: #5d6f5a;
+        }
+        
+        /* Content Pages */
+        .content-page {
+            padding: 40px 0;
+        }
+        
+        .section-title {
+            font-size: 2.2rem;
+            color: #e8f0e5;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 3px solid #7a8471;
+            padding-bottom: 10px;
+        }
+        
+        .fact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .fact-card {
+            background: #4a5c47;
+            border-left: 5px solid #7a8471;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            border-radius: 0 8px 8px 0;
+            color: #e8f0e5;
+        }
+        
+        .image-placeholder {
+            width: 100%;
+            height: 200px;
+            background: #5d6f5a;
+            border: 2px dashed #a8b5a0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #c8d5c5;
+            font-style: italic;
+            margin: 15px 0;
+        }
+        
+        /* Quiz wireframe styling */
+        .quiz-container {
+            background: #4a5c47;
+            border: 3px solid #7a8471;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        
+        .quiz-question {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #e8f0e5;
+        }
+        
+        .quiz-options {
+            display: grid;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .quiz-option {
+            padding: 15px;
+            background: #5d6f5a;
+            border: 2px dashed #7a8471;
+            border-radius: 8px;
+            color: #e8f0e5;
+        }
+        
+        .btn {
+            background: #7a8471;
+            color: #e8f0e5;
+            border: 2px dashed #a8b5a0;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #1a2518;
+            color: #e8f0e5;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+        }
+        
+        /* Page indicators */
+        .page-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4a5c47;
+            padding: 10px;
+            border-radius: 8px;
+            border: 2px dashed #7a8471;
+            font-size: 12px;
+            color: #a8b5a0;
+            z-index: 100;
+        }
+        
+        /* Accessibility Panel */
+        .accessibility-panel {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: #1a2518;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        
+        .accessibility-toggle {
+            background: #7a8471;
+            color: #e8f0e5;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .accessibility-toggle:hover {
+            background: #8a9481;
+        }
+        
+        .accessibility-toggle:focus {
+            outline: 3px solid #a8b5a0;
+            outline-offset: 2px;
+        }
+        
+        .accessibility-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #1a2518;
+            border: 2px solid #7a8471;
+            border-radius: 8px;
+            padding: 20px;
+            min-width: 250px;
+            margin-top: 8px;
+        }
+        
+        .accessibility-content.show {
+            display: block;
+        }
+        
+        .accessibility-content h3 {
+            color: #e8f0e5;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .accessibility-group {
+            margin-bottom: 15px;
+        }
+        
+        .accessibility-group label {
+            display: block;
+            color: #a8b5a0;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .accessibility-buttons {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .accessibility-buttons button {
+            background: #4a5c47;
+            color: #e8f0e5;
+            border: 1px solid #7a8471;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .accessibility-buttons button:hover {
+            background: #5d6f5a;
+        }
+        
+        .accessibility-buttons button.active {
+            background: #7a8471;
+            border-color: #a8b5a0;
+        }
+        
+        .accessibility-buttons button:focus {
+            outline: 2px solid #a8b5a0;
+            outline-offset: 1px;
+        }
+        
+        .accessibility-group input[type="checkbox"] {
+            margin-right: 8px;
+            transform: scale(1.2);
+        }
+        
+        /* Accessibility States */
+        body.font-small {
+            font-size: 14px;
+        }
+        
+        body.font-large {
+            font-size: 18px;
+        }
+        
+        body.font-large .splash-title {
+            font-size: 5rem;
+        }
+        
+        body.font-large .header h1 {
+            font-size: 3.5rem;
+        }
+        
+        body.font-large .section-title {
+            font-size: 2.8rem;
+        }
+        
+        body.high-contrast {
+            background: #000000;
+            color: #ffffff;
+        }
+        
+        body.high-contrast .wireframe-box,
+        body.high-contrast .fact-card,
+        body.high-contrast .quiz-container {
+            background: #000000;
+            border-color: #ffffff;
+            color: #ffffff;
+        }
+        
+        body.high-contrast .header,
+        body.high-contrast .nav,
+        body.high-contrast .footer {
+            background: #000000;
+            color: #ffffff;
+        }
+        
+        body.high-contrast .nav-item,
+        body.high-contrast .btn,
+        body.high-contrast .enter-btn {
+            background: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+        }
+        
+        body.dark-mode {
+            background: #0a0a0a;
+            color: #f5f5f5;
+        }
+        
+        body.dark-mode .wireframe-box,
+        body.dark-mode .fact-card,
+        body.dark-mode .quiz-container {
+            background: #1a1a1a;
+            border-color: #666666;
+            color: #f5f5f5;
+        }
+        
+        body.reduce-motion * {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+        
+        body.enhanced-focus *:focus {
+            outline: 3px solid #ffff00 !important;
+            outline-offset: 2px !important;
+        }
+        
+        body.screen-reader .image-placeholder::after {
+            content: " [Image description: " attr(data-alt) "]";
+            color: #a8b5a0;
+            font-style: italic;
+        }
+                      
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .splash-title {
+                font-size: 2.5rem;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-items {
+                gap: 20px;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .fact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .accessibility-panel {
+                top: 10px;
+                left: 10px;
+            }
+            
+            .accessibility-content {
+                min-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Accessibility Controls -->
+    <div class="accessibility-panel" id="accessibility-panel">
+        <button class="accessibility-toggle" onclick="toggleAccessibility()" aria-label="Toggle accessibility options">
+            <span class="accessibility-icon">♿</span>
+        </button>
+        <div class="accessibility-content" id="accessibility-content">
+            <h3>Accessibility Options</h3>
+            
+            <div class="accessibility-group">
+                <label>Font Size</label>
+                <div class="accessibility-buttons">
+                    <button onclick="changeFontSize('small')" aria-label="Small font size">A</button>
+                    <button onclick="changeFontSize('normal')" class="active" aria-label="Normal font size">A</button>
+                    <button onclick="changeFontSize('large')" aria-label="Large font size">A</button>
+                </div>
+            </div>
+            
+            <div class="accessibility-group">
+                <label>Contrast</label>
+                <div class="accessibility-buttons">
+                    <button onclick="changeContrast('normal')" class="active" aria-label="Normal contrast">Normal</button>
+                    <button onclick="changeContrast('high')" aria-label="High contrast">High</button>
+                    <button onclick="changeContrast('dark')" aria-label="Dark mode">Dark</button>
+                </div>
+            </div>
+            
+            <div class="accessibility-group">
+                <label>
+                    <input type="checkbox" onchange="toggleAnimations()" id="reduce-motion" aria-label="Reduce animations">
+                    Reduce Motion
+                </label>
+            </div>
+            
+            <div class="accessibility-group">
+                <label>
+                    <input type="checkbox" onchange="toggleScreenReader()" id="screen-reader" aria-label="Screen reader mode">
+                    Screen Reader Mode
+                </label>
+            </div>
+            
+            <div class="accessibility-group">
+                <label>
+                    <input type="checkbox" onchange="toggleFocusIndicators()" id="focus-indicators" aria-label="Enhanced focus indicators">
+                    Enhanced Focus
+                </label>
+            </div>
+        </div>
+    </div>
+    
+        <!-- Main Site Layout Preview -->
+        <div id="main-content" style="padding: 40px 0; background: #2d3e2a;">
+            <div class="container">
+                <div class="wireframe-box">
+                    <!-- Header preview -->
+                <div class="header">
+                    <div class="container">
+                        <h1>Oddities of WWII</h1>
+                        <p>Uncovering the Strange, Forgotten, and Extraordinary Stories of World War II</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Preview -->
+                <div class="nav">
+                    <div class="container">
+                        <div class="nav-items">
+                            <span class="nav-item" onclick="showPage('home')">[Home]</span>
+                            <span class="nav-item" onclick="showPage('facts')">[Well-Known Facts]</span>
+                            <span class="nav-item" onclick="showPage('oddities')">[Strange Oddities]</span>
+                            <span class="nav-item" onclick="showPage('quiz')">[Test Your Knowledge]</span>
+                            <span class="nav-item" onclick="showPage('gallery')">[Photo Gallery]</span>
+                            <span class="nav-item" onclick="showPage('dark')" style="border-color: #ff6b35; color: #ff6b35;">[Dark Discoveries ⚠️]</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Homepage Sampler -->
+                <div id="home-page" class="content-page page-section">
+                    <div class="container">
+                        <div class="wireframe-box">
+                            <h2 class="section-title">Welcome to WWII's Hidden Stories</h2>
+                            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 40px; color: #a8b5a0;">
+                                Get a taste of the incredible, bizarre, and forgotten tales from the war
+                            </p>
+                            
+                            <!-- Sampler Grid -->
+                            <div class="fact-grid">
+                                <!-- Well-Known Facts Sampler -->
+                                <div class="fact-card">
+                                    <h3>From Well-Known Facts</h3>
+                                    <div class="image-placeholder">[D-Day soldiers storming beach]</div>
+                                    <h4>D-Day: The Normandy Landings</h4>
+                                    <p><strong>June 6, 1944</strong> - Over 150,000 Allied troops landed on Normandy beaches in the largest seaborne invasion in history. The weather was so bad that German commanders thought no invasion would come...</p>
+                                    <button class="btn" onclick="showPage('facts')" style="margin-top: 15px; cursor: pointer;">Read More →</button>
+                                </div>
+                                
+                                <!-- Strange Oddities Sampler -->
+                                <div class="fact-card">
+                                    <h3>From Strange Oddities</h3>
+                                    <div class="image-placeholder">[Bear in Polish Army uniform]</div>
+                                    <h4>Wojtek: The Soldier Bear</h4>
+                                    <p>A Syrian brown bear was officially enlisted in the Polish Army, given a rank, and helped carry ammunition during the Battle of Monte Cassino. He loved beer, cigarettes, and wrestling with soldiers...</p>
+                                    <button class="btn" onclick="showPage('oddities')" style="margin-top: 15px; cursor: pointer;">Read More →</button>
+                                </div>
+                                
+                                <!-- Quiz Sampler -->
+                                <div class="fact-card">
+                                    <h3>Quick Trivia Challenge</h3>
+                                    <div class="image-placeholder">[Question mark with military helmet]</div>
+                                    <h4>Test Your Knowledge</h4>
+                                    <p><strong>Sample Question:</strong> What rank did Wojtek the bear achieve in the Polish Army?</p>
+                                    <div style="margin: 10px 0; font-size: 0.9rem; color: #c8d5c5;">A) Private B) Corporal C) Sergeant D) Lieutenant</div>
+                                    <button class="btn" onclick="showPage('quiz')" style="margin-top: 15px; cursor: pointer;">Take Full Quiz →</button>
+                                </div>
+                                
+                                <!-- Photo Gallery Sampler -->
+                                <div class="fact-card">
+                                    <h3>From Photo Gallery</h3>
+                                    <div class="image-placeholder">[Night Witches with their planes]</div>
+                                    <h4>The Night Witches Squadron</h4>
+                                    <p>Soviet female pilots flew over 23,000 combat missions in wooden biplanes. They flew at night without radios or parachutes, earning the nickname "Night Witches" from terrified German soldiers...</p>
+                                    <button class="btn" onclick="showPage('gallery')" style="margin-top: 15px; cursor: pointer;">View Gallery →</button>
+                                </div>
+                            </div>
+                            
+                            <!-- Mini Trivia Section -->
+                            <div style="margin-top: 50px;">
+                                <h3 style="text-align: center; color: #e8f0e5; margin-bottom: 30px;">Quick Trivia: Can You Answer These?</h3>
+                                <div class="fact-grid">
+                                    <div style="background: #4a5c47; padding: 20px; border-radius: 8px; border: 2px dashed #7a8471;">
+                                        <h4 style="color: #7a8471;">Question 1</h4>
+                                        <p>What did the US military attach to bats during WWII?</p>
+                                        <small style="color: #a8b5a0;">Hint: It involved fire...</small>
+                                    </div>
+                                    <div style="background: #4a5c47; padding: 20px; border-radius: 8px; border: 2px dashed #7a8471;">
+                                        <h4 style="color: #7a8471;">Question 2</h4>
+                                        <p>Which animal was officially enlisted in the Polish Army?</p>
+                                        <small style="color: #a8b5a0;">Hint: It loved beer and cigarettes...</small>
+                                    </div>
+                                    <div style="background: #4a5c47; padding: 20px; border-radius: 8px; border: 2px dashed #7a8471;">
+                                        <h4 style="color: #7a8471;">Question 3</h4>
+                                        <p>What were inflatable tanks used for?</p>
+                                        <small style="color: #a8b5a0;">Hint: The Ghost Army...</small>
+                                    </div>
+                                    <div style="background: #4a5c47; padding: 20px; border-radius: 8px; border: 2px dashed #7a8471;">
+                                        <h4 style="color: #7a8471;">Question 4</h4>
+                                        <p>What did British agents hide explosives inside?</p>
+                                        <small style="color: #a8b5a0;">Hint: Small, furry, and dead...</small>
+                                    </div>
+                                </div>
+                                <div style="text-align: center; margin-top: 30px;">
+                                    <button class="btn" onclick="showPage('quiz')" style="font-size: 1.1rem; padding: 15px 30px; cursor: pointer;">
+                                        Find Out the Answers in Our Full Quiz! →
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Well-Known Facts Page -->
+                <div id="facts-page" class="content-page page-section" style="display: none;">
+                    <div class="container">
+                        <div class="wireframe-box">
+                            <div class="wireframe-label">WELL-KNOWN FACTS PAGE</div>
+                            <h2 class="section-title">Well-Known WWII Facts</h2>
+                            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 30px; color: #a8b5a0;">
+                                The major events and turning points everyone knows about
+                            </p>
+                            
+                            <div class="fact-grid">
+                                <div class="fact-card">
+                                    <h3>D-Day: The Normandy Landings</h3>
+                                    <div class="image-placeholder">[Soldiers storming Omaha Beach]</div>
+                                    <p><strong>June 6, 1944</strong> - Operation Overlord was the largest seaborne invasion in history. Over 150,000 Allied troops landed on the beaches of Normandy, France. The operation involved 5,000 ships, 11,000 aircraft, and airborne troops who parachuted behind enemy lines hours before the beach assault. Despite heavy casualties, especially at Omaha Beach, the landings succeeded in establishing a crucial second front in Western Europe.</p>
+                                    <p><em>Fun fact: The weather was so bad that the invasion was delayed by 24 hours, and German commanders thought no invasion would come in such conditions!</em></p>
+                                </div>
+                                
+                                <div class="fact-card">
+                                    <h3>Pearl Harbor: A Date Which Will Live in Infamy</h3>
+                                    <div class="image-placeholder">[USS Arizona burning in Pearl Harbor]</div>
+                                    <p><strong>December 7, 1941</strong> - At 7:48 AM, Japanese aircraft launched a surprise attack on the US naval base at Pearl Harbor, Hawaii. The attack sank or damaged 18 US warships, including 8 battleships, and killed over 2,400 Americans. The USS Arizona alone lost 1,177 crew members when a bomb detonated its ammunition magazine.</p>
+                                    <p>This "sneak attack" brought the United States fully into World War II, with President Roosevelt declaring war on Japan the next day. The rallying cry "Remember Pearl Harbor!" would fuel American determination throughout the war.</p>
+                                </div>
+                                
+                                <div class="fact-card">
+                                    <h3>Battle of Stalingrad: The Turning Point</h3>
+                                    <div class="image-placeholder">[Soviet soldiers in Stalingrad ruins]</div>
+                                    <p><strong>August 1942 - February 1943</strong> - The Battle of Stalingrad was the bloodiest battle in human history, with an estimated 2 million casualties. German forces, stretched thin and fighting in brutal winter conditions, were eventually encircled by Soviet forces. The German 6th Army, once considered elite, was completely destroyed.</p>
+                                    <p>This marked the beginning of Germany's long retreat on the Eastern Front. Soviet forces would push westward from this point, eventually reaching Berlin. The psychological impact was enormous - Germany's aura of invincibility was shattered.</p>
+                                </div>
+                                
+                                <div class="fact-card">
+                                    <h3>The Manhattan Project</h3>
+                                    <div class="image-placeholder">[Mushroom cloud over Hiroshima]</div>
+                                    <p><strong>1942-1945</strong> - The top-secret American program to develop atomic weapons employed over 130,000 people across multiple sites. The project cost $2 billion (about $28 billion today) and involved the brightest scientific minds, including Einstein, Oppenheimer, and Fermi.</p>
+                                    <p>The first successful test, "Trinity," occurred in New Mexico on July 16, 1945. Three weeks later, "Little Boy" was dropped on Hiroshima, followed by "Fat Man" on Nagasaki. Japan surrendered six days after Nagasaki, ending the war but beginning the nuclear age.</p>
+                                </div>
+                                
+                                <div class="fact-card">
+                                    <h3>The London Blitz</h3>
+                                    <div class="image-placeholder">[London burning during the Blitz]</div>
+                                    <p><strong>September 1940 - May 1941</strong> - For 57 consecutive nights, German bombers pounded London and other British cities. Over 40,000 civilians were killed, and more than a million homes were destroyed or damaged. Londoners took shelter in Underground stations, creating an entire subterranean society.</p>
+                                    <p>Despite the devastation, British morale remained strong. Churchill's leadership and the RAF's victory in the Battle of Britain prevented a German invasion. The Blitz became a symbol of British resilience and the "never give up" spirit.</p>
+                                </div>
+                                
+                                <div class="fact-card">
+                                    <h3>Battle of Midway: Turning the Pacific Tide</h3>
+                                    <div class="image-placeholder">[US dive bombers attacking Japanese carriers]</div>
+                                    <p><strong>June 4-7, 1942</strong> - Just six months after Pearl Harbor, the US Navy dealt a crushing blow to the Japanese fleet at Midway. American codebreakers had intercepted Japanese plans, allowing Admiral Nimitz to position his forces perfectly.</p>
+                                    <p>In one day, Japan lost four aircraft carriers and many of its most experienced pilots. The battle marked the beginning of America's island-hopping campaign across the Pacific. Japan would never again take the offensive in the Pacific theater.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Strange Oddities Page -->
+                <div id="oddities-page" class="content-page page-section" style="display: none;">
+                    <div class="container">
+                        <div class="wireframe-box">
+                            <div class="wireframe-label">STRANGE ODDITIES PAGE</div>
+                            <h2 class="section-title">Strange WWII Oddities</h2>
+                            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 30px; color: #a8b5a0;">
+                                The bizarre, unexpected, and downright weird stories from the war
+                            </p>
+                            
+                            <div class="fact-grid">
+                                <div class="fact-card">
+                                    <h3>Wojtek: The Soldier Bear</h3>
+                                    <div class="image-placeholder">[Bear in Polish Army uniform carrying artillery shell]</div>
+                                    <p>In 1942, Polish soldiers found an orphaned Syrian brown bear cub in Iran and adopted him as their mascot. Named Wojtek (meaning "happy warrior"), he was officially enlisted in the Polish Army with the rank of Private, later promoted to Corporal.</p>
+                                    <p>Wojtek learned to salute, march on his hind legs, and even carry heavy artillery shells during the Battle of Monte Cassino in Italy. He became the official symbol of the 22nd Artillery Supply Company. The bear loved beer, cigarettes, and wrestling with soldiers - and he always won the wrestling matches!</p>
+                                    <p>After the war, Wojtek lived in Edinburgh Zoo until his death in 1963. There are now statues of him in Edinburgh, Kraków, and other cities. He remains the only bear to have been officially enlisted in any army during WWII.</p>
+                                    <p><em>Wojtek's favorite treats were honey, marmalade, and beer - he could drink a whole bottle in one go!</em></p>
+                                </div>
+                                
+                                <div class="fact-card">
+                                    <h3>The Ghost Army: Masters of Deception</h3>
+                                    <div class="image-placeholder">[Soldiers inflating a fake Sherman tank]</div>
+                                    <p>The 23rd Headquarters Special Troops, known as the "Ghost Army," was a top-secret unit of artists, designers, and sound engineers who used inflatable tanks, fake radio chatter, and recorded sounds of armored divisions to fool German reconnaissance.</p>
+                                    <p>They carried inflatable Sherman tanks that weighed only 100 pounds but looked real from the air. Their "sonic deception" trucks could project the sounds of tank movements up to 15 miles away. This 1,100-man unit is credited with saving thousands of lives by misdirecting enemy forces during crucial operations.</p>
+                                    <p><em>The unit included future fashion designer Bill Blass and painter Ellsworth Kelly!</em></p>
+                                </div>
+                                
+                                <div class="fact-card">
+                                    <h3>Project X-Ray: The Bat Bomb</h3>
+                                    <div class="image-placeholder">[Diagram of bat with tiny incendiary device]</div>
+                                    <p>Dental surgeon Lytle Adams convinced the US military to develop bombs carried by bats. The plan involved cooling Mexican free-tailed bats into hibernation, strapping tiny napalm incendiary devices to them, and dropping them over Japanese cities at dawn.</p>
+                                    <p>The bats would wake up, fly into buildings to roost, and the timers would ignite the napalm. During testing, some armed bats escaped and burned down a hangar and a general's car at the Carlsbad Army Airfield. The project was cancelled when the atomic bomb became available.</p>
+                                    <p><em>Cost: $2 million. Damage to own facilities: Significant. Success rate: Zero.</em></p>
+                                </div>
+                                
+                                <div class="fact-card">
+                                    <h3>Operation Mincemeat: The Man Who Never Was</h3>
+                                    <div class="image-placeholder">[Briefcase with fake documents]</div>
+                                    <p>British intelligence created a fake identity for a homeless man who had died from rat poison. "Major William Martin" was given a complete backstory, fake love letters, theater tickets, and most importantly, fake invasion plans suggesting the Allies would attack Greece instead of Sicily.</p>
+                                    <p>The body was dropped off the Spanish coast where German agents would find it. The deception worked perfectly - Hitler moved troops to defend Greece, leaving Sicily vulnerable. The operation was so successful that it directly contributed to the Allied victory in Sicily.</p>
+                                    <p><em>The fake fiancée's photo was actually an MI5 clerk who didn't know she was part of the operation!</em></p>
+                                </div>
+                                
+                                <div class="fact-card">
+                                    <h3>The Explosive Rat Scheme</h3>
+                                    <div class="image-placeholder">[Dead rat with explosives inside]</div>
+                                    <p>The British Special Operations Executive (SOE) developed a plan to hide plastic explosives inside dead rats. The idea was that German workers would shovel the rats into boiler furnaces, causing massive explosions in factories and power plants.</p>
+                                    <p>However, the first shipment of explosive rats was discovered by the Germans before any could be deployed. Ironically, this failure was more effective than success would have been - the Germans became so paranoid about booby-trapped rats that they wasted enormous resources checking every dead rodent they found.</p>
+                                    <p><em>The psychological warfare was more effective than the actual explosives!</em></p>
+                                </div>
+                                
+                                <div class="fact-card">
+                                    <h3>Project Pigeon: Guided Missiles</h3>
+                                    <div class="image-placeholder">[Pigeon in missile guidance system]</div>
+                                    <p>Psychologist B.F. Skinner trained pigeons to guide missiles by pecking at targets on a screen. The pigeons were placed in the nose cone of missiles, and their pecking would adjust the missile's flight path toward enemy ships.</p>
+                                    <p>The pigeons were surprisingly accurate and could distinguish between different types of ships. However, military officials couldn't take the idea seriously - the thought of pigeons controlling million-dollar missiles seemed too absurd. The project was cancelled, though it was briefly revived during the Cold War.</p>
+                                    <p><em>The pigeons had a better accuracy rate than early electronic guidance systems!</em></p>
+                                </div>
+                                
+                                <div class="fact-card">
+                                    <h3>Project Habakkuk: The Ice Aircraft Carrier</h3>
+                                    <div class="image-placeholder">[Massive ice ship concept art]</div>
+                                    <p>British inventor Geoffrey Pyke proposed building aircraft carriers out of "pykrete" - a mixture of ice and wood pulp that was stronger than concrete and unsinkable. These ice ships would be 2,000 feet long and virtually indestructible.</p>
+                                    <p>Churchill was so excited by the idea that he demonstrated pykrete's strength by firing a revolver at a block of it during a meeting - the bullet bounced off and nearly hit an admiral. A prototype was built in Canada, but the project was abandoned when it became clear that the ships would require enormous refrigeration systems.</p>
+                                    <p><em>The prototype took three summers to fully melt, proving the concept worked!</em></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dark Discoveries Page -->
+                <div id="dark-page" class="content-page page-section" style="display: none;">
+                    <div class="container">
+                        <div class="wireframe-box" style="border-color: #ff6b35;">
+                            <div class="wireframe-label" style="color: #ff6b35;">DARK DISCOVERIES PAGE - MATURE CONTENT WARNING</div>
+                            
+                            <!-- Content Warning -->
+                            <div style="background: #4a2c2c; border: 3px solid #ff6b35; padding: 30px; margin: 20px 0; border-radius: 8px; text-align: center;">
+                                <h2 style="color: #ff6b35; margin-bottom: 15px;">⚠️ CONTENT WARNING ⚠️</h2>
+                                <p style="font-size: 1.1rem; color: #e8f0e5; margin-bottom: 15px;">
+                                    This section contains disturbing historical information about Nazi war crimes discovered during liberation. 
+                                    The content includes graphic descriptions of human remains and medical experiments.
+                                </p>
+                                <p style="color: #c8d5c5; margin-bottom: 20px;">
+                                    These discoveries represent some of the darkest evidence of the Holocaust and Nazi atrocities. 
+                                    Viewer discretion is strongly advised.
+                                </p>
+                                <button class="btn" onclick="showDarkContent()" style="background: #ff6b35; border-color: #ff6b35; cursor: pointer;">
+                                    I Understand - Show Historical Content
+                                </button>
+                                <div style="margin-top: 15px;">
+                                    <button class="btn" onclick="showPage('home')" style="background: #7a8471; cursor: pointer;">
+                                        Return to Homepage
+                                    </button>
+                                </div>
+                                
+                                <div style="margin-top: 30px; padding-top: 25px; border-top: 2px solid #ff6b35;">
+                                    <h3 style="color: #ff6b35; margin-bottom: 15px;">Historical Importance</h3>
+                                    <p style="color: #e8f0e5; margin-bottom: 12px; font-size: 0.95rem;">
+                                        These discoveries provided crucial evidence for the Nuremberg Trials and other war crimes prosecutions. 
+                                        They demonstrated the systematic nature of Nazi dehumanization and the industrial scale of the Holocaust.
+                                    </p>
+                                    <p style="color: #c8d5c5; font-size: 0.95rem;">
+                                        While disturbing, documenting these findings ensures that the full scope of Nazi crimes is remembered 
+                                        and that such atrocities are never repeated. They serve as permanent testimony to the victims 
+                                        and the importance of protecting human dignity.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Hidden Dark Content -->
+                            <div id="dark-content" style="display: none;">
+                                <h2 class="section-title" style="color: #ff6b35;">Dark Discoveries of Liberation</h2>
+                                <p style="text-align: center; font-size: 1.1rem; margin-bottom: 30px; color: #a8b5a0;">
+                                    The horrific evidence Allied forces found when liberating Nazi facilities
+                                </p>
+                                
+                                <div class="fact-grid">
+                                    <div class="fact-card" style="border-left-color: #ff6b35; background: #4a2c2c;">
+                                        <h3 style="color: #ff6b35;">Human Skin Furnishings</h3>
+                                        <div class="image-placeholder" style="border-color: #ff6b35;">[SS officer's home with disturbing furniture]</div>
+                                        <p>When Allied forces liberated concentration camps and searched SS officers' homes, they discovered furniture and household items made from human skin. Lampshades, book covers, gloves, and even wallets were found crafted from the tattooed skin of murdered prisoners.</p>
+                                        <p>The most notorious case was Ilse Koch, wife of Buchenwald commandant Karl-Otto Koch, who allegedly collected tattooed skin to make lampshades and other items. These discoveries provided undeniable physical evidence of the systematic dehumanization and murder occurring in the camps.</p>
+                                        <p><em>Location: Multiple SS residences near Buchenwald, Dachau, and other camps</em></p>
+                                    </div>
+                                    
+                                    <div class="fact-card" style="border-left-color: #ff6b35; background: #4a2c2c;">
+                                        <h3 style="color: #ff6b35;">The Wall of Eyes</h3>
+                                        <div class="image-placeholder" style="border-color: #ff6b35;">[Medical office with preserved human eyes]</div>
+                                        <p>In the medical facilities at several concentration camps, liberating forces discovered walls lined with hundreds of preserved human eyes in glass jars. These were collected by Nazi doctors conducting "racial research" and medical experiments on prisoners.</p>
+                                        <p>The eyes were categorized by color and ethnic origin as part of the Nazi obsession with racial classification. Many belonged to children and were removed while the victims were still alive. The sight was so disturbing that several Allied soldiers required psychological treatment after the discovery.</p>
+                                        <p><em>Location: Medical research facilities at Auschwitz-Birkenau and other camps</em></p>
+                                    </div>
+                                    
+                                    <div class="fact-card" style="border-left-color: #ff6b35; background: #4a2c2c;">
+                                        <h3 style="color: #ff6b35;">The Soap Factory Discovery</h3>
+                                        <div class="image-placeholder" style="border-color: #ff6b35;">[Industrial facility with disturbing equipment]</div>
+                                        <p>At the Stutthof concentration camp, Allied forces discovered what appeared to be an experimental facility for producing soap from human fat. While the extent of actual production remains debated by historians, the equipment and preliminary materials were found, along with detailed plans for industrial-scale production.</p>
+                                        <p>The discovery included rendering equipment, chemical processing apparatus, and samples of soap-like substances that tested positive for human remains. Whether this was experimental or operational, it represented the ultimate dehumanization - turning murder victims into commercial products.</p>
+                                        <p><em>Location: Stutthof concentration camp, near Gdansk, Poland</em></p>
+                                    </div>
+                                    
+                                    <div class="fact-card" style="border-left-color: #ff6b35; background: #4a2c2c;">
+                                        <h3 style="color: #ff6b35;">The Human Skin Library</h3>
+                                        <div class="image-placeholder" style="border-color: #ff6b35;">[Books bound in human skin]</div>
+                                        <p>In the private library of SS-Oberführer Karl Hermann Frank in Prague, Allied investigators discovered an entire collection of books bound in human skin. The bindings were made from prisoners executed in Czech resistance operations, with some covers featuring tattoos still visible.</p>
+                                        <p>Frank had commissioned these macabre volumes as "trophies" of his suppression of Czech resistance. Each book represented not just the murder of the original victim, but the systematic desecration of their remains. The collection included poetry books, military manuals, and even children's stories.</p>
+                                        <p><em>Location: SS headquarters in Prague, Czechoslovakia</em></p>
+                                    </div>
+                                    
+                                    <div class="fact-card" style="border-left-color: #ff6b35; background: #4a2c2c;">
+                                        <h3 style="color: #ff6b35;">The Bone Meal Operation</h3>
+                                        <div class="image-placeholder" style="border-color: #ff6b35;">[Industrial bone grinding equipment]</div>
+                                        <p>At several extermination camps, liberating forces discovered industrial bone-crushing machinery used to process human remains into fertilizer and bone meal. The operation was so extensive that nearby farms had been using human bone meal as crop fertilizer for years without knowing its origin.</p>
+                                        <p>The machinery could process hundreds of bodies per day, grinding bones into powder that was then sold to agricultural suppliers. Local farmers reported unusually fertile crops in the area, not knowing they were growing food with the remains of Holocaust victims. The scale suggested this was a systematic operation across multiple camps.</p>
+                                        <p><em>Location: Treblinka, Sobibor, and other extermination camps</em></p>
+                                    </div>
+                                </div>
+                                
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quiz Page -->
+                <div id="quiz-page" class="content-page page-section" style="display: none;">
+                    <div class="container">
+                        <div class="wireframe-box">
+                            <div class="wireframe-label">QUIZ PAGE</div>
+                            <h2 class="section-title">Test Your WWII Knowledge</h2>
+                            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 30px; color: #a8b5a0;">
+                                How much do you really know about the war's strangest moments?
+                            </p>
+                            
+                            <div class="quiz-container">
+                                <div id="quiz-question" class="quiz-question">
+                                    Which country used inflatable tanks to fool enemy reconnaissance?
+                                </div>
+                                
+                                <div class="quiz-options" id="quiz-options">
+                                    <div class="quiz-option" onclick="selectAnswer(this, false)">A) Germany</div>
+                                    <div class="quiz-option" onclick="selectAnswer(this, true)">B) United States</div>
+                                    <div class="quiz-option" onclick="selectAnswer(this, false)">C) Soviet Union</div>
+                                    <div class="quiz-option" onclick="selectAnswer(this, false)">D) Britain</div>
+                                </div>
+                                
+                                <button class="btn" onclick="nextQuestion()" id="quiz-btn">Submit Answer</button>
+                                <div id="quiz-result" style="margin-top: 20px; font-weight: bold; text-align: center;"></div>
+                            </div>
+                            
+                            <div style="margin-top: 40px; text-align: center;">
+                                <h3 style="color: #e8f0e5; margin-bottom: 20px;">Quiz Statistics</h3>
+                                <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+                                    <div style="background: #4a5c47; padding: 20px; border-radius: 8px; border: 2px dashed #7a8471;">
+                                        <div style="font-size: 2rem; color: #7a8471;">Q</div>
+                                        <div>Questions: <span id="question-count">0</span>/5</div>
+                                    </div>
+                                    <div style="background: #4a5c47; padding: 20px; border-radius: 8px; border: 2px dashed #7a8471;">
+                                        <div style="font-size: 2rem; color: #7a8471;">✓</div>
+                                        <div>Correct: <span id="correct-count">0</span></div>
+                                    </div>
+                                    <div style="background: #4a5c47; padding: 20px; border-radius: 8px; border: 2px dashed #7a8471;">
+                                        <div style="font-size: 2rem; color: #7a8471;">%</div>
+                                        <div>Score: <span id="score-percent">0</span>%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Photo Gallery Page -->
+                <div id="gallery-page" class="content-page page-section" style="display: none;">
+                    <div class="container">
+                        <div class="wireframe-box">
+                            <div class="wireframe-label">PHOTO GALLERY PAGE</div>
+                            <h2 class="section-title">WWII Photo Gallery</h2>
+                            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 30px; color: #a8b5a0;">
+                                Rare and fascinating photographs from the war's most unusual moments
+                            </p>
+                            
+                            <div class="fact-grid">
+                                <div class="fact-card">
+                                    <h3>Wojtek the Soldier Bear</h3>
+                                    <div class="image-placeholder">[Wojtek in uniform with Polish soldiers]</div>
+                                    <p><strong>22nd Artillery Supply Company Mascot</strong> - This famous photo shows Wojtek the bear in his Polish Army uniform, standing with his fellow soldiers. He was officially enlisted with the rank of Corporal and had his own paybook and serial number.</p>
+                                    <p>Wojtek learned military discipline, could salute on command, and march on his hind legs. During the Battle of Monte Cassino, he helped carry heavy artillery shells to the front lines. His unit's emblem featured a bear carrying an artillery shell, inspired by Wojtek himself.</p>
+                                    <p><em>Photo shows: Wojtek with soldiers of the 22nd Company, Italy, 1944</em></p>
+                                </div>
+                                
+                                <div class="fact-card">
+                                    <h3>The Night Witches Squadron</h3>
+                                    <div class="image-placeholder">[Soviet female pilots with their Po-2 biplanes]</div>
+                                    <p><strong>588th Night Bomber Regiment</strong> - These Soviet female pilots flew over 23,000 combat missions in wooden Polikarpov Po-2 biplanes. They flew at night without radios, radar, or parachutes to avoid detection.</p>
+                                    <p>The Germans called them "Nachthexen" (Night Witches) because their planes made a distinctive whooshing sound when they cut their engines during bombing runs. Many pilots were teenagers, and they became some of the most feared pilots of the war.</p>
+                                    <p><em>Photo shows: Squadron members planning their next night mission, 1943</em></p>
+                                </div>
+                                
+                                <div class="fact-card">
+                                    <h3>V-2 Rocket: Dawn of the Space Age</h3>
+                                    <div class="image-placeholder">[V-2 rocket on launch pad with German technicians]</div>
+                                    <p><strong>Vergeltungswaffe 2</strong> - The world's first operational ballistic missile, developed by Wernher von Braun's team. These rockets could reach the edge of space and travel at 3,500 mph.</p>
+                                    <p>Over 3,000 V-2s were launched, mostly at London and Antwerp. After the war, both the US and Soviet space programs were built on captured V-2 technology and German rocket scientists. The same rockets that terrorized London eventually took humans to the moon.</p>
+                                    <p><em>Photo shows: V-2 being prepared for launch at Peenemünde, 1944</em></p>
+                                </div>
+                                
+                                <div class="fact-card">
+                                    <h3>The Ghost Army in Action</h3>
+                                    <div class="image-placeholder">[Soldiers setting up inflatable Sherman tank]</div>
+                                    <p><strong>23rd Headquarters Special Troops</strong> - Artists and designers creating the ultimate military illusion. This photo shows the famous inflatable Sherman tanks that could be set up by just two men in 30 minutes.</p>
+                                    <p>The unit traveled with a complete fake army: inflatable vehicles, dummy landing craft, fake radio networks, and sound trucks that could simulate the noise of entire armored divisions. Their deceptions saved countless lives during D-Day and other operations.</p>
+                                    <p><em>Photo shows: Ghost Army soldiers inflating a fake tank in France, 1944</em></p>
+                                </div>
+                                
+                                <div class="fact-card">
+                                    <h3>Project X-Ray Test Facility</h3>
+                                    <div class="image-placeholder">[Scientists with caged bats and tiny incendiary devices]</div>
+                                    <p><strong>Bat Bomb Development</strong> - This rare photo shows the secret testing facility where scientists attached tiny napalm bombs to Mexican free-tailed bats. The project consumed $2 million before being abandoned.</p>
+                                    <p>The bats were kept in refrigerated containers to make them hibernate, then released at dawn when they would naturally seek dark places to roost. Unfortunately, during one test, armed bats escaped and burned down the testing facility.</p>
+                                    <p><em>Photo shows: Dr. Lytle Adams examining bat carriers at Carlsbad, 1943</em></p>
+                                </div>
+                                
+                                <div class="fact-card">
+                                    <h3>HMS Habakkuk Ice Ship Model</h3>
+                                    <div class="image-placeholder">[Large ice ship model in Canadian lake]</div>
+                                    <p><strong>Project Habakkuk Prototype</strong> - This photo shows the 60-foot prototype of the proposed ice aircraft carrier built on Patricia Lake in Canada. The ship was made of pykrete (ice mixed with wood pulp).</p>
+                                    <p>The prototype proved that pykrete was incredibly strong and could support enormous weight. However, the full-size ship would have been 2,000 feet long and required massive refrigeration systems. The project was abandoned when conventional carriers became available.</p>
+                                    <p><em>Photo shows: The Habakkuk prototype during construction, Alberta, 1943</em></p>
+                                </div>
+                                
+                                <div class="fact-card">
+                                    <h3>Project Pigeon Training Center</h3>
+                                    <div class="image-placeholder">[B.F. Skinner with pigeons and missile guidance system]</div>
+                                    <p><strong>Pigeon-Guided Missiles</strong> - Psychologist B.F. Skinner developed this system where pigeons would peck at targets on a screen to guide missiles. The pigeons were trained to recognize enemy ships and could distinguish between different vessel types.</p>
+                                    <p>The system was surprisingly accurate, with pigeons achieving better hit rates than early electronic guidance systems. However, military officials couldn't overcome their skepticism about trusting million-dollar missiles to birds.</p>
+                                    <p><em>Photo shows: Skinner demonstrating the pigeon guidance system, 1944</em></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Preview -->
+                <div class="footer">
+                    <div class="container">
+                        <p>🎖️ Dig deeper into history's forgotten corners</p>
+                        <p style="margin-top: 10px; opacity: 0.8;">Every story here could change how you see the war</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function startTransition() {
+            // Start the Night Witches flying animation
+            const nightWitches = document.querySelectorAll('.night-witch');
+            
+            // Trigger each plane with a slight delay
+            nightWitches[0].classList.add('fly-in');
+            setTimeout(() => nightWitches[1].classList.add('fly-in'), 300);
+            setTimeout(() => nightWitches[2].classList.add('fly-in'), 600);
+            
+            // Start V-2 rocket launches in rapid succession after planes
+            setTimeout(() => {
+                const rockets = document.querySelectorAll('.v2-rocket');
+                rockets[0].classList.add('launch');
+                setTimeout(() => rockets[1].classList.add('launch'), 200);
+                setTimeout(() => rockets[2].classList.add('launch'), 400);
+                setTimeout(() => rockets[3].classList.add('launch'), 600);
+                setTimeout(() => rockets[4].classList.add('launch'), 800);
+                setTimeout(() => rockets[5].classList.add('launch'), 1000);
+            }, 1500);
+            
+            // After all animations finish, transition to main site
+            setTimeout(() => {
+                document.getElementById('splash').classList.add('fade-out');
+                
+                setTimeout(() => {
+                    document.getElementById('splash').classList.remove('active');
+                    
+                    // Show the main site structure preview
+                    const mainContent = document.querySelector('div[style*="padding: 40px 0"]');
+                    mainContent.style.display = 'block';
+                    mainContent.style.opacity = '0';
+                    mainContent.style.transition = 'opacity 0.8s ease-in-out';
+                    
+                    setTimeout(() => {
+                        mainContent.style.opacity = '1';
+                    }, 100);
+                }, 800);
+            }, 5000);
+        }
+        
+        function showPage(pageId) {
+            // Hide all page sections
+            const allPages = document.querySelectorAll('.page-section');
+            allPages.forEach(page => {
+                page.style.display = 'none';
+            });
+            
+            // Show the selected page
+            const targetPage = document.getElementById(pageId + '-page');
+            if (targetPage) {
+                targetPage.style.display = 'block';
+            }
+        }
+        
+        function showDarkContent() {
+            document.getElementById('dark-content').style.display = 'block';
+            // Scroll to the content
+            document.getElementById('dark-content').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Quiz functionality
+        let currentQuestion = 0;
+        let correctAnswers = 0;
+        let selectedAnswer = null;
+        
+        const quizQuestions = [
+            {
+                question: "What rank did Wojtek the bear achieve in the Polish Army?",
+                options: ["A) Private", "B) Corporal", "C) Sergeant", "D) Lieutenant"],
+                correct: 1,
+                explanation: "Wojtek started as a Private but was promoted to Corporal. He officially served in the 22nd Artillery Supply Company and helped carry ammunition during the Battle of Monte Cassino."
+            },
+            {
+                question: "What did the US military attach to bats during WWII?",
+                options: ["A) Cameras", "B) Incendiary bombs", "C) Radio transmitters", "D) Poison gas"],
+                correct: 1,
+                explanation: "Project X-Ray involved attaching tiny napalm incendiary devices to Mexican free-tailed bats, hoping they would roost in Japanese buildings and start fires."
+            },
+            {
+                question: "Which country used inflatable tanks to fool enemy reconnaissance?",
+                options: ["A) Germany", "B) United States", "C) Soviet Union", "D) Britain"],
+                correct: 1,
+                explanation: "The US 23rd Headquarters Special Troops, known as the 'Ghost Army,' used inflatable Sherman tanks and other deception tactics."
+            },
+            {
+                question: "What did the British hide explosives inside of?",
+                options: ["A) Dead rats", "B) Fake rocks", "C) Tree branches", "D) Cigarette packs"],
+                correct: 0,
+                explanation: "The SOE planned to hide explosives in dead rats, hoping German workers would shovel them into furnaces."
+            },
+            {
+                question: "What were the Soviet female night pilots called by the Germans?",
+                options: ["A) Sky Demons", "B) Night Witches", "C) Dark Angels", "D) Shadow Hawks"],
+                correct: 1,
+                explanation: "The Germans called them 'Nachthexen' (Night Witches) because of the whooshing sound their planes made during bombing runs."
+            }
+        ];
+        
+        function selectAnswer(element, isCorrect) {
+            // Remove previous selections
+            document.querySelectorAll('.quiz-option').forEach(option => {
+                option.style.background = '#5d6f5a';
+                option.style.border = '2px dashed #7a8471';
+            });
+            
+            // Highlight selected answer
+            element.style.background = '#7a8471';
+            element.style.border = '2px solid #a8b5a0';
+            
+            selectedAnswer = isCorrect;
+        }
+        
+        function nextQuestion() {
+            const resultDiv = document.getElementById('quiz-result');
+            const btn = document.getElementById('quiz-btn');
+            
+            if (selectedAnswer === null) {
+                resultDiv.innerHTML = '<span style="color: #ff6b35;">Please select an answer first!</span>';
+                return;
+            }
+            
+            // Show result for current question
+            if (selectedAnswer) {
+                correctAnswers++;
+                resultDiv.innerHTML = '<span style="color: #7a8471;">✅ Correct!</span><br>' + quizQuestions[currentQuestion].explanation;
+            } else {
+                resultDiv.innerHTML = '<span style="color: #ff6b35;">❌ Incorrect.</span><br>' + quizQuestions[currentQuestion].explanation;
+            }
+            
+            currentQuestion++;
+            updateStats();
+            
+            if (currentQuestion < quizQuestions.length) {
+                setTimeout(() => {
+                    loadNextQuestion();
+                }, 3000);
+                btn.textContent = 'Loading next question...';
+                btn.disabled = true;
+            } else {
+                setTimeout(() => {
+                    showFinalResults();
+                }, 3000);
+                btn.textContent = 'Calculating final score...';
+                btn.disabled = true;
+            }
+        }
+        
+        function loadNextQuestion() {
+            const question = quizQuestions[currentQuestion];
+            document.getElementById('quiz-question').textContent = question.question;
+            
+            const optionsDiv = document.getElementById('quiz-options');
+            optionsDiv.innerHTML = '';
+            
+            question.options.forEach((option, index) => {
+                const optionDiv = document.createElement('div');
+                optionDiv.className = 'quiz-option';
+                optionDiv.textContent = option;
+                optionDiv.onclick = () => selectAnswer(optionDiv, index === question.correct);
+                optionsDiv.appendChild(optionDiv);
+            });
+            
+            document.getElementById('quiz-result').innerHTML = '';
+            document.getElementById('quiz-btn').textContent = 'Submit Answer';
+            document.getElementById('quiz-btn').disabled = false;
+            selectedAnswer = null;
+        }
+        
+        function showFinalResults() {
+            const percentage = Math.round((correctAnswers / quizQuestions.length) * 100);
+            let message = '';
+            
+            if (percentage >= 80) {
+                message = '🏆 Excellent! You\'re a WWII history expert!';
+            } else if (percentage >= 60) {
+                message = '👍 Good job! You know your WWII oddities!';
+            } else if (percentage >= 40) {
+                message = '📚 Not bad! Time to learn more strange history!';
+            } else {
+                message = '🤔 These stories are pretty obscure - try reading more!';
+            }
+            
+            document.getElementById('quiz-result').innerHTML = 
+                `<div style="font-size: 1.2rem; color: #7a8471;">${message}</div>
+                 <div style="margin-top: 10px;">Final Score: ${correctAnswers}/${quizQuestions.length} (${percentage}%)</div>`;
+            
+            document.getElementById('quiz-btn').textContent = 'Restart Quiz';
+            document.getElementById('quiz-btn').onclick = restartQuiz;
+            document.getElementById('quiz-btn').disabled = false;
+        }
+        
+        function restartQuiz() {
+            currentQuestion = 0;
+            correctAnswers = 0;
+            selectedAnswer = null;
+            updateStats();
+            loadNextQuestion();
+            document.getElementById('quiz-btn').onclick = nextQuestion;
+        }
+        
+        function updateStats() {
+            document.getElementById('question-count').textContent = currentQuestion;
+            document.getElementById('correct-count').textContent = correctAnswers;
+            const percentage = currentQuestion > 0 ? Math.round((correctAnswers / currentQuestion) * 100) : 0;
+            document.getElementById('score-percent').textContent = percentage;
+        }
+        
+        // Accessibility Functions
+        function toggleAccessibility() {
+            const content = document.getElementById('accessibility-content');
+            content.classList.toggle('show');
+        }
+        
+        function changeFontSize(size) {
+            // Remove existing font size classes
+            document.body.classList.remove('font-small', 'font-large');
+            
+            // Update button states
+            document.querySelectorAll('.accessibility-buttons button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Apply new font size
+            if (size === 'small') {
+                document.body.classList.add('font-small');
+            } else if (size === 'large') {
+                document.body.classList.add('font-large');
+            }
+            
+            // Update active button
+            event.target.classList.add('active');
+        }
+        
+        function changeContrast(mode) {
+            // Remove existing contrast classes
+            document.body.classList.remove('high-contrast', 'dark-mode');
+            
+            // Update button states
+            document.querySelectorAll('.accessibility-buttons button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Apply new contrast mode
+            if (mode === 'high') {
+                document.body.classList.add('high-contrast');
+            } else if (mode === 'dark') {
+                document.body.classList.add('dark-mode');
+            }
+            
+            // Update active button
+            event.target.classList.add('active');
+        }
+        
+        function toggleAnimations() {
+            const checkbox = document.getElementById('reduce-motion');
+            if (checkbox.checked) {
+                document.body.classList.add('reduce-motion');
+            } else {
+                document.body.classList.remove('reduce-motion');
+            }
+        }
+        
+        function toggleScreenReader() {
+            const checkbox = document.getElementById('screen-reader');
+            if (checkbox.checked) {
+                document.body.classList.add('screen-reader');
+                // Add alt text to image placeholders
+                document.querySelectorAll('.image-placeholder').forEach(placeholder => {
+                    const text = placeholder.textContent;
+                    placeholder.setAttribute('data-alt', text.replace(/[\[\]]/g, ''));
+                });
+            } else {
+                document.body.classList.remove('screen-reader');
+            }
+        }
+        
+        function toggleFocusIndicators() {
+            const checkbox = document.getElementById('focus-indicators');
+            if (checkbox.checked) {
+                document.body.classList.add('enhanced-focus');
+            } else {
+                document.body.classList.remove('enhanced-focus');
+            }
+        }
+        
+        // Close accessibility panel when clicking outside
+        document.addEventListener('click', function(event) {
+            const panel = document.getElementById('accessibility-panel');
+            const content = document.getElementById('accessibility-content');
+            
+            if (!panel.contains(event.target) && content.classList.contains('show')) {
+                content.classList.remove('show');
+            }
+        });
+        
+        // Keyboard navigation for accessibility panel
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const content = document.getElementById('accessibility-content');
+                if (content.classList.contains('show')) {
+                    content.classList.remove('show');
+                    document.querySelector('.accessibility-toggle').focus();
+                }
+            }
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97f260965039fb11',t:'MTc1Nzg3OTA0OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
