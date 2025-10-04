@@ -970,7 +970,11 @@
                         </div>
                     </div>
                 </div>
-
+            <!-- Lightbox overlay -->
+            <div id="lightbox" class="lightbox">
+            <span class="close">&times;</span>
+            <img id="lightbox-img" src="" alt="">
+            </div>
                 <!-- Footer Preview -->
                 <div class="footer">
                     <div class="container">
@@ -1287,6 +1291,33 @@
                     document.querySelector('.accessibility-toggle').focus();
                 }
             }
+        });
+        
+        document.addEventListener("DOMContentLoaded", () => {
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+        const closeBtn = document.querySelector(".lightbox .close");
+
+        // Attach click to every gallery image
+        document.querySelectorAll(".gallery-image").forEach(img => {
+            img.addEventListener("click", () => {
+            lightbox.style.display = "flex";
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            });
+        });
+
+        // Close lightbox
+        closeBtn.addEventListener("click", () => {
+            lightbox.style.display = "none";
+        });
+
+        // Close if clicking outside the image
+        lightbox.addEventListener("click", e => {
+            if (e.target === lightbox) {
+            lightbox.style.display = "none";
+            }
+        });
         });
     </script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97f260965039fb11',t:'MTc1Nzg3OTA0OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
