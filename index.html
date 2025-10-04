@@ -402,7 +402,11 @@
     </style>
 </head>
 <body>
-    
+    <!-- Lightbox overlay -->
+    <div id="lightbox" class="lightbox">
+        <span class="close">&times;</span>
+        <img id="lightbox-img" src="" alt="">
+    </div>
     <!-- Accessibility Controls -->
     <div class="accessibility-panel" id="accessibility-panel">
         <button class="accessibility-toggle" onclick="toggleAccessibility()" aria-label="Toggle accessibility options">
@@ -970,11 +974,7 @@
                         </div>
                     </div>
                 </div>
-            <!-- Lightbox overlay -->
-            <div id="lightbox" class="lightbox">
-            <span class="close">&times;</span>
-            <img id="lightbox-img" src="" alt="">
-            </div>
+            
                 <!-- Footer Preview -->
                 <div class="footer">
                     <div class="container">
