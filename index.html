@@ -126,20 +126,40 @@
             border-radius: var(--radius);
         }
         
+        .lightbox {
+            display: none;                 /* hidden by default */
+            position: fixed;               /* fixed to viewport, not page */
+            top: 0; left: 0;
+            width: 100%; height: 100%;     /* cover the entire viewport */
+            background: rgba(0,0,0,0.85);  /* dark overlay */
+            
+            display: flex;                 /* flexbox centering */
+            justify-content: center;       /* horizontal center */
+            align-items: center;           /* vertical center */
+            z-index: 1000;
+        }
+
+        .lightbox img {
+            max-width: 90%;                /* scale down if too wide */
+            max-height: 90%;               /* scale down if too tall */
+            border-radius: var(--radius);
+            box-shadow: 0 0 20px rgba(0,0,0,0.6);
+        }
+        
         .lightbox .close {
             position: absolute;
             top: 20px;
-            right: 30px;           /* puts it on the right side */
-            font-size: 3rem;       /* makes it bigger */
-            color: rgb(0, 0, 0);          /* white "×" text */
-            background: red;       /* red background box */
-            padding: 0.25em 0.5em; /* space around the "×" */
-            border-radius: 5px;    /* optional: rounded corners */
+            right: 30px;
+            font-size: 1.5rem
+            color: white;
+            background: red;
+            padding: 0.25em 0.5em;
+            border-radius: 5px;
             cursor: pointer;
         }
 
-        .lightbox .close:hover {
-            background: darkred;   /* darker red on hover */
+            .lightbox .close:hover {
+            background: darkred;
         }
 
         /* Quiz wireframe styling */
