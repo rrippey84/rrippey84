@@ -127,30 +127,29 @@
         }
         
         .lightbox {
-            display: none;                 /* hidden by default */
-            position: fixed;               /* fixed to viewport, not page */
+            display: none;
+            position: fixed;
             top: 0; left: 0;
-            width: 100%; height: 100%;     /* cover the entire viewport */
-            background: rgba(0,0,0,0.85);  /* dark overlay */
-            
-            display: flex;                 /* flexbox centering */
-            justify-content: center;       /* horizontal center */
-            align-items: center;           /* vertical center */
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            display: flex;
+            justify-content: center;
+            align-items: center;
             z-index: 1000;
-        }
+            }
 
         .lightbox img {
-            max-width: 90%;                /* scale down if too wide */
-            max-height: 90%;               /* scale down if too tall */
-            border-radius: var(--radius);
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 6px;
             box-shadow: 0 0 20px rgba(0,0,0,0.6);
         }
-        
+
         .lightbox .close {
             position: absolute;
             top: 20px;
             right: 30px;
-            font-size: 1.5rem
+            font-size: 1rem;       /* smaller close button */
             color: white;
             background: red;
             padding: 0.25em 0.5em;
@@ -158,9 +157,10 @@
             cursor: pointer;
         }
 
-            .lightbox .close:hover {
+        .lightbox .close:hover {
             background: darkred;
-        }
+}
+</style>
 
         /* Quiz wireframe styling */
         .quiz-container {
