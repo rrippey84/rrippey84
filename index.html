@@ -1274,11 +1274,7 @@
             optionDiv.onclick = () => selectAnswer(optionDiv, index === question.correct);
             optionsDiv.appendChild(optionDiv);
         });
-        document.addEventListener("DOMContentLoaded", () => {
-            loadNextQuestion(); // load first question
-            document.getElementById('quiz-btn').onclick = nextQuestion;
-            document.getElementById('total-questions').textContent = quizQuestions.length;
-    });
+        
         document.getElementById('quiz-result').innerHTML = '';
         document.getElementById('quiz-btn').textContent = 'Submit Answer';
         document.getElementById('quiz-btn').disabled = false;
