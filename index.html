@@ -161,44 +161,56 @@
             background: darkred;
 }
         /* Quiz wireframe styling */
+        /* Quiz Styles */
         .quiz-container {
-            background: #4a5c47;
-            border: 3px solid #7a8471;
-            border-radius: 12px;
-            padding: 30px;
-            margin: 30px 0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background: #2e2e2e;
+            color: #f0f0f0;
+            border-radius: 8px;
+            font-family: Arial, sans-serif;
         }
-        
+
         .quiz-question {
-            font-size: 1.3rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #e8f0e5;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
         }
-        
-        .quiz-options {
-            display: grid;
-            gap: 10px;
-            margin: 20px 0;
-        }
-        
+
         .quiz-option {
-            padding: 15px;
             background: #5d6f5a;
             border: 2px dashed #7a8471;
-            border-radius: 8px;
-            color: #e8f0e5;
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, border 0.3s;
         }
-        
-        .btn {
+
+        .quiz-option:hover {
+            background: #6f7f6a;
+        }
+
+        #quiz-result {
+            margin-top: 1rem;
+            min-height: 2rem;
+        }
+
+        #quiz-btn {
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
             background: #7a8471;
-            color: #e8f0e5;
-            border: 2px dashed #a8b5a0;
-            padding: 12px 24px;
-            border-radius: 6px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
             font-size: 1rem;
         }
+
+        #quiz-btn:disabled {
+            background: #555;
+            cursor: not-allowed;
+        }
+
         
         /* Footer */
         .footer {
@@ -833,29 +845,20 @@
                             <p style="text-align: center; font-size: 1.1rem; margin-bottom: 30px; color: #a8b5a0;">
                                 How much do you really know about the war's strangest moments?
                             </p>
-                            
+
                             <div class="quiz-container">
-                                <div id="quiz-question" class="quiz-question">
-                                    Which country used inflatable tanks to fool enemy reconnaissance?
-                                </div>
-                                
-                                <div class="quiz-options" id="quiz-options">
-                                    <div class="quiz-option" onclick="selectAnswer(this, false)">A) Germany</div>
-                                    <div class="quiz-option" onclick="selectAnswer(this, true)">B) United States</div>
-                                    <div class="quiz-option" onclick="selectAnswer(this, false)">C) Soviet Union</div>
-                                    <div class="quiz-option" onclick="selectAnswer(this, false)">D) Britain</div>
-                                </div>
-                                
-                                <button class="btn" onclick="nextQuestion()" id="quiz-btn">Submit Answer</button>
+                                <div id="quiz-question" class="quiz-question"></div>
+                                <div class="quiz-options" id="quiz-options"></div>
+                                <button class="btn" id="quiz-btn">Submit Answer</button>
                                 <div id="quiz-result" style="margin-top: 20px; font-weight: bold; text-align: center;"></div>
                             </div>
-                            
+
                             <div style="margin-top: 40px; text-align: center;">
                                 <h3 style="color: #e8f0e5; margin-bottom: 20px;">Quiz Statistics</h3>
                                 <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
                                     <div style="background: #4a5c47; padding: 20px; border-radius: 8px; border: 2px dashed #7a8471;">
                                         <div style="font-size: 2rem; color: #7a8471;">Q</div>
-                                        <div>Questions: <span id="question-count">0</span>/5</div>
+                                        <div>Questions: <span id="question-count">0</span>/<span id="total-questions">0</span></div>
                                     </div>
                                     <div style="background: #4a5c47; padding: 20px; border-radius: 8px; border: 2px dashed #7a8471;">
                                         <div style="font-size: 2rem; color: #7a8471;">✓</div>
@@ -870,7 +873,7 @@
                         </div>
                     </div>
                 </div>
-
+        
                 <!-- Photo Gallery Page -->
                 <div id="gallery-page" class="content-page page-section" style="display: none;">
                     <div class="container">
