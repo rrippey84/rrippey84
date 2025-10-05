@@ -1280,7 +1280,12 @@
         document.getElementById('quiz-btn').textContent = 'Submit Answer';
         document.getElementById('quiz-btn').disabled = false;
 
-
+         document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("quiz-page").style.display = "block"; // show the quiz
+            loadNextQuestion(); // load first question
+            document.getElementById('quiz-btn').onclick = nextQuestion;
+            document.getElementById('total-questions').textContent = quizQuestions.length;
+    });
     }
 
         document.addEventListener("DOMContentLoaded", () => {
