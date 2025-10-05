@@ -836,7 +836,7 @@
                 </div>
 
                 <!-- Quiz Page -->
-                <div id="quiz-page" class="content-page page-section">
+                <div id="quiz-page" class="content-page page-section" style="display: none;">
                     <div class="container">
                         <div class="wireframe-box">
                             <h2 class="section-title">Test Your WWII Knowledge</h2>
@@ -1280,12 +1280,7 @@
         document.getElementById('quiz-btn').textContent = 'Submit Answer';
         document.getElementById('quiz-btn').disabled = false;
 
-         document.addEventListener("DOMContentLoaded", () => {
-            document.getElementById("quiz-page").style.display = "block"; // show the quiz
-            loadNextQuestion(); // load first question
-            document.getElementById('quiz-btn').onclick = nextQuestion;
-            document.getElementById('total-questions').textContent = quizQuestions.length;
-    });
+
     }
 
         document.addEventListener("DOMContentLoaded", () => {
@@ -1312,13 +1307,6 @@
             }
         });
     });
-
-        document.addEventListener("DOMContentLoaded", () => {
-            document.getElementById("quiz-page").style.display = "block"; // show the quiz
-            loadNextQuestion(); // load first question
-            document.getElementById('quiz-btn').onclick = nextQuestion;
-            document.getElementById('total-questions').textContent = quizQuestions.length;
-    });
-</script>
+    </script>
 <script>function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97f260965039fb11',t:'MTc1Nzg3OTA0OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
