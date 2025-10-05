@@ -159,58 +159,7 @@
         .lightbox .close:hover {
             background: darkred;
 }
-        /* Quiz Styles */
-        .quiz-container {
-            max-width: 600px;
-            margin: 2rem auto;
-            padding: 1.5rem;
-            background: #2e2e2e;
-            color: #f0f0f0;
-            border-radius: 8px;
-            font-family: Arial, sans-serif;
-        }
-
-        .quiz-question {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-
-        .quiz-option {
-            background: #5d6f5a;
-            border: 2px dashed #7a8471;
-            padding: 0.5rem;
-            margin: 0.5rem 0;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s, border 0.3s;
-        }
-
-        .quiz-option:hover {
-            background: #6f7f6a;
-        }
-
-        #quiz-result {
-            margin-top: 1rem;
-            min-height: 2rem;
-        }
-
-        #quiz-btn {
-            margin-top: 1rem;
-            padding: 0.5rem 1rem;
-            background: #7a8471;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        #quiz-btn:disabled {
-            background: #555;
-            cursor: not-allowed;
-        }
-
-        
-        /* Footer */
+       /* Footer */
         .footer {
             background: #1a2518;
             color: #e8f0e5;
@@ -515,7 +464,6 @@
                             <span class="nav-item" onclick="showPage('home')">[Home]</span>
                             <span class="nav-item" onclick="showPage('facts')">[Well-Known Facts]</span>
                             <span class="nav-item" onclick="showPage('oddities')">[Strange Oddities]</span>
-                            <span class="nav-item" onclick="showPage('quiz')">[Test Your Knowledge]</span>
                             <span class="nav-item" onclick="showPage('gallery')">[Photo Gallery]</span>
                             <span class="nav-item" onclick="showPage('dark')" style="border-color: #ff6b35; color: #ff6b35;">[Dark Discoveries ⚠️]</span>
                         </div>
@@ -575,39 +523,7 @@
                                     <p>Soviet female pilots flew over 23,000 combat missions in wooden biplanes. They flew at night without radios or parachutes, earning the nickname "Night Witches" from terrified German soldiers...</p>
                                     <button class="btn" onclick="showPage('gallery')" style="margin-top: 15px; cursor: pointer;">View Gallery →</button>
                                 </div>
-                            </div>
-                            
-                            <!-- Mini Trivia Section -->
-                            <div style="margin-top: 50px;">
-                                <h3 style="text-align: center; color: #e8f0e5; margin-bottom: 30px;">Quick Trivia: Can You Answer These?</h3>
-                                <div class="fact-grid">
-                                    <div style="background: #4a5c47; padding: 20px; border-radius: 8px; border: 2px dashed #7a8471;">
-                                        <h4 style="color: #7a8471;">Question 1</h4>
-                                        <p>What did the US military attach to bats during WWII?</p>
-                                        <small style="color: #a8b5a0;">Hint: It involved fire...</small>
-                                    </div>
-                                    <div style="background: #4a5c47; padding: 20px; border-radius: 8px; border: 2px dashed #7a8471;">
-                                        <h4 style="color: #7a8471;">Question 2</h4>
-                                        <p>Which animal was officially enlisted in the Polish Army?</p>
-                                        <small style="color: #a8b5a0;">Hint: It loved beer and cigarettes...</small>
-                                    </div>
-                                    <div style="background: #4a5c47; padding: 20px; border-radius: 8px; border: 2px dashed #7a8471;">
-                                        <h4 style="color: #7a8471;">Question 3</h4>
-                                        <p>What were inflatable tanks used for?</p>
-                                        <small style="color: #a8b5a0;">Hint: The Ghost Army...</small>
-                                    </div>
-                                    <div style="background: #4a5c47; padding: 20px; border-radius: 8px; border: 2px dashed #7a8471;">
-                                        <h4 style="color: #7a8471;">Question 4</h4>
-                                        <p>What did British agents hide explosives inside?</p>
-                                        <small style="color: #a8b5a0;">Hint: Small, furry, and dead...</small>
-                                    </div>
-                                </div>
-                                <div style="text-align: center; margin-top: 30px;">
-                                    <button class="btn" onclick="showPage('quiz')" style="font-size: 1.1rem; padding: 15px 30px; cursor: pointer;">
-                                        Find Out the Answers in Our Full Quiz! →
-                                    </button>
-                                </div>
-                            </div>
+                            </div>  
                         </div>
                     </div>
                 </div>
@@ -835,43 +751,6 @@
                     </div>
                 </div>
 
-                <!-- Quiz Page -->
-                <div id="quiz-page" class="content-page page-section" style="display: none;">
-                    <div class="container">
-                        <div class="wireframe-box">
-                            <h2 class="section-title">Test Your WWII Knowledge</h2>
-                            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 30px; color: #a8b5a0;">
-                                How much do you really know about the war's strangest moments?
-                            </p>
-
-                            <div class="quiz-container">
-                                <div id="quiz-question" class="quiz-question"></div>
-                                <div class="quiz-options" id="quiz-options"></div>
-                                <button class="btn" id="quiz-btn">Submit Answer</button>
-                                <div id="quiz-result" style="margin-top: 20px; font-weight: bold; text-align: center;"></div>
-                            </div>
-
-                            <div style="margin-top: 40px; text-align: center;">
-                                <h3 style="color: #e8f0e5; margin-bottom: 20px;">Quiz Statistics</h3>
-                                <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
-                                    <div style="background: #4a5c47; padding: 20px; border-radius: 8px; border: 2px dashed #7a8471;">
-                                        <div style="font-size: 2rem; color: #7a8471;">Q</div>
-                                        <div>Questions: <span id="question-count">0</span>/<span id="total-questions">0</span></div>
-                                    </div>
-                                    <div style="background: #4a5c47; padding: 20px; border-radius: 8px; border: 2px dashed #7a8471;">
-                                        <div style="font-size: 2rem; color: #7a8471;">✓</div>
-                                        <div>Correct: <span id="correct-count">0</span></div>
-                                    </div>
-                                    <div style="background: #4a5c47; padding: 20px; border-radius: 8px; border: 2px dashed #7a8471;">
-                                        <div style="font-size: 2rem; color: #7a8471;">%</div>
-                                        <div>Score: <span id="score-percent">0</span>%</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        
                 <!-- Photo Gallery Page -->
                 <div id="gallery-page" class="content-page page-section" style="display: none;">
                     <div class="container">
@@ -1179,109 +1058,6 @@
                 }
             }
         });
-        
-        let currentQuestion = 0;
-        let correctAnswers = 0;
-        let selectedAnswer = null;
-
-        const quizQuestions = [
-        {
-            question: "What rank did Wojtek the bear achieve in the Polish Army?",
-            options: ["A) Private", "B) Corporal", "C) Sergeant", "D) Lieutenant"],
-            correct: 1,
-            explanation: "Wojtek started as a Private but was promoted to Corporal. He officially served in the 22nd Artillery Supply Company and helped carry ammunition during the Battle of Monte Cassino."
-        },
-        {
-            question: "What did the US military attach to bats during WWII?",
-            options: ["A) Cameras", "B) Incendiary bombs", "C) Radio transmitters", "D) Poison gas"],
-            correct: 1,
-            explanation: "Project X-Ray involved attaching tiny napalm incendiary devices to Mexican free-tailed bats, hoping they would roost in Japanese buildings and start fires."
-        },
-        {
-            question: "Which country used inflatable tanks to fool enemy reconnaissance?",
-            options: ["A) Germany", "B) United States", "C) Soviet Union", "D) Britain"],
-            correct: 1,
-            explanation: "The US 23rd Headquarters Special Troops, known as the 'Ghost Army,' used inflatable Sherman tanks and other deception tactics."
-        },
-        {
-            question: "What did the British hide explosives inside of?",
-            options: ["A) Dead rats", "B) Fake rocks", "C) Tree branches", "D) Cigarette packs"],
-            correct: 0,
-            explanation: "The SOE planned to hide explosives in dead rats, hoping German workers would shovel them into furnaces."
-        },
-        {
-            question: "What were the Soviet female night pilots called by the Germans?",
-            options: ["A) Sky Demons", "B) Night Witches", "C) Dark Angels", "D) Shadow Hawks"],
-            correct: 1,
-            explanation: "The Germans called them 'Nachthexen' (Night Witches) because of the whooshing sound their planes made during bombing runs."
-        }
-        ];
-
-        function selectAnswer(element, isCorrect) {
-        document.querySelectorAll('.quiz-option').forEach(option => {
-            option.style.background = '#5d6f5a';
-            option.style.border = '2px dashed #7a8471';
-        });
-        element.style.background = '#7a8471';
-        element.style.border = '2px solid #a8b5a0';
-        selectedAnswer = isCorrect;
-        }
-
-        function nextQuestion() {
-        const resultDiv = document.getElementById('quiz-result');
-        const btn = document.getElementById('quiz-btn');
-
-        if (selectedAnswer === null) {
-            resultDiv.innerHTML = '<span style="color: #ff6b35;">Please select an answer first!</span>';
-            return;
-        }
-
-        if (selectedAnswer) {
-            correctAnswers++;
-            resultDiv.innerHTML = '<span style="color: #7a8471;">✅ Correct!</span><br>' + quizQuestions[currentQuestion].explanation;
-        } else {
-            resultDiv.innerHTML = '<span style="color: #ff6b35;">❌ Incorrect.</span><br>' + quizQuestions[currentQuestion].explanation;
-        }
-
-        currentQuestion++;
-        updateStats();
-
-        if (currentQuestion < quizQuestions.length) {
-            setTimeout(() => {
-            loadNextQuestion();
-            }, 3000);
-            btn.textContent = 'Loading next question...';
-            btn.disabled = true;
-        } else {
-            setTimeout(() => {
-            showFinalResults();
-            }, 3000);
-            btn.textContent = 'Calculating final score...';
-            btn.disabled = true;
-        }
-        }
-
-        function loadNextQuestion() {
-        const question = quizQuestions[currentQuestion];
-        document.getElementById('quiz-question').textContent = question.question;
-
-        const optionsDiv = document.getElementById('quiz-options');
-        optionsDiv.innerHTML = '';
-
-        question.options.forEach((option, index) => {
-            const optionDiv = document.createElement('div');
-            optionDiv.className = 'quiz-option';
-            optionDiv.textContent = option;
-            optionDiv.onclick = () => selectAnswer(optionDiv, index === question.correct);
-            optionsDiv.appendChild(optionDiv);
-        });
-
-        document.getElementById('quiz-result').innerHTML = '';
-        document.getElementById('quiz-btn').textContent = 'Submit Answer';
-        document.getElementById('quiz-btn').disabled = false;
-
-
-    }
 
         document.addEventListener("DOMContentLoaded", () => {
             const lightbox = document.getElementById("lightbox");
