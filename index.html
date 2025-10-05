@@ -1082,154 +1082,7 @@
             // Scroll to the content
             document.getElementById('dark-content').scrollIntoView({ behavior: 'smooth' });
         }
-        
-        // Quiz functionality
-        let currentQuestion = 0;
-        let correctAnswers = 0;
-        let selectedAnswer = null;
-        
-        const quizQuestions = [
-            {
-                question: "What rank did Wojtek the bear achieve in the Polish Army?",
-                options: ["A) Private", "B) Corporal", "C) Sergeant", "D) Lieutenant"],
-                correct: 1,
-                explanation: "Wojtek started as a Private but was promoted to Corporal. He officially served in the 22nd Artillery Supply Company and helped carry ammunition during the Battle of Monte Cassino."
-            },
-            {
-                question: "What did the US military attach to bats during WWII?",
-                options: ["A) Cameras", "B) Incendiary bombs", "C) Radio transmitters", "D) Poison gas"],
-                correct: 1,
-                explanation: "Project X-Ray involved attaching tiny napalm incendiary devices to Mexican free-tailed bats, hoping they would roost in Japanese buildings and start fires."
-            },
-            {
-                question: "Which country used inflatable tanks to fool enemy reconnaissance?",
-                options: ["A) Germany", "B) United States", "C) Soviet Union", "D) Britain"],
-                correct: 1,
-                explanation: "The US 23rd Headquarters Special Troops, known as the 'Ghost Army,' used inflatable Sherman tanks and other deception tactics."
-            },
-            {
-                question: "What did the British hide explosives inside of?",
-                options: ["A) Dead rats", "B) Fake rocks", "C) Tree branches", "D) Cigarette packs"],
-                correct: 0,
-                explanation: "The SOE planned to hide explosives in dead rats, hoping German workers would shovel them into furnaces."
-            },
-            {
-                question: "What were the Soviet female night pilots called by the Germans?",
-                options: ["A) Sky Demons", "B) Night Witches", "C) Dark Angels", "D) Shadow Hawks"],
-                correct: 1,
-                explanation: "The Germans called them 'Nachthexen' (Night Witches) because of the whooshing sound their planes made during bombing runs."
-            }
-        ];
-        
-        function selectAnswer(element, isCorrect) {
-            // Remove previous selections
-            document.querySelectorAll('.quiz-option').forEach(option => {
-                option.style.background = '#5d6f5a';
-                option.style.border = '2px dashed #7a8471';
-            });
-            
-            // Highlight selected answer
-            element.style.background = '#7a8471';
-            element.style.border = '2px solid #a8b5a0';
-            
-            selectedAnswer = isCorrect;
-        }
-        
-        function nextQuestion() {
-            const resultDiv = document.getElementById('quiz-result');
-            const btn = document.getElementById('quiz-btn');
-            
-            if (selectedAnswer === null) {
-                resultDiv.innerHTML = '<span style="color: #ff6b35;">Please select an answer first!</span>';
-                return;
-            }
-            
-            // Show result for current question
-            if (selectedAnswer) {
-                correctAnswers++;
-                resultDiv.innerHTML = '<span style="color: #7a8471;">✅ Correct!</span><br>' + quizQuestions[currentQuestion].explanation;
-            } else {
-                resultDiv.innerHTML = '<span style="color: #ff6b35;">❌ Incorrect.</span><br>' + quizQuestions[currentQuestion].explanation;
-            }
-            
-            currentQuestion++;
-            updateStats();
-            
-            if (currentQuestion < quizQuestions.length) {
-                setTimeout(() => {
-                    loadNextQuestion();
-                }, 3000);
-                btn.textContent = 'Loading next question...';
-                btn.disabled = true;
-            } else {
-                setTimeout(() => {
-                    showFinalResults();
-                }, 3000);
-                btn.textContent = 'Calculating final score...';
-                btn.disabled = true;
-            }
-        }
-        
-        function loadNextQuestion() {
-            const question = quizQuestions[currentQuestion];
-            document.getElementById('quiz-question').textContent = question.question;
-            
-            const optionsDiv = document.getElementById('quiz-options');
-            optionsDiv.innerHTML = '';
-            
-            question.options.forEach((option, index) => {
-                const optionDiv = document.createElement('div');
-                optionDiv.className = 'quiz-option';
-                optionDiv.textContent = option;
-                optionDiv.onclick = () => selectAnswer(optionDiv, index === question.correct);
-                optionsDiv.appendChild(optionDiv);
-            });
-            
-            document.getElementById('quiz-result').innerHTML = '';
-            document.getElementById('quiz-btn').textContent = 'Submit Answer';
-            document.getElementById('quiz-btn').disabled = false;
-            selectedAnswer = null;
-        }
-        
-        function showFinalResults() {
-            const percentage = Math.round((correctAnswers / quizQuestions.length) * 100);
-            let message = '';
-            
-            if (percentage >= 80) {
-                message = '🏆 Excellent! You\'re a WWII history expert!';
-            } else if (percentage >= 60) {
-                message = '👍 Good job! You know your WWII oddities!';
-            } else if (percentage >= 40) {
-                message = '📚 Not bad! Time to learn more strange history!';
-            } else {
-                message = '🤔 These stories are pretty obscure - try reading more!';
-            }
-            
-            document.getElementById('quiz-result').innerHTML = 
-                `<div style="font-size: 1.2rem; color: #7a8471;">${message}</div>
-                 <div style="margin-top: 10px;">Final Score: ${correctAnswers}/${quizQuestions.length} (${percentage}%)</div>`;
-            
-            document.getElementById('quiz-btn').textContent = 'Restart Quiz';
-            document.getElementById('quiz-btn').onclick = restartQuiz;
-            document.getElementById('quiz-btn').disabled = false;
-        }
-        
-        function restartQuiz() {
-            currentQuestion = 0;
-            correctAnswers = 0;
-            selectedAnswer = null;
-            updateStats();
-            loadNextQuestion();
-            document.getElementById('quiz-btn').onclick = nextQuestion;
-        }
-        
-        function updateStats() {
-            document.getElementById('question-count').textContent = currentQuestion;
-            document.getElementById('correct-count').textContent = correctAnswers;
-            const percentage = currentQuestion > 0 ? Math.round((correctAnswers / currentQuestion) * 100) : 0;
-            document.getElementById('score-percent').textContent = percentage;
-        }
-        
+              
         // Accessibility Functions
         function toggleAccessibility() {
             const content = document.getElementById('accessibility-content');
@@ -1329,41 +1182,108 @@
             }
         });
         
-        document.addEventListener("DOMContentLoaded", () => {
-        const lightbox = document.getElementById("lightbox");
-        const lightboxImg = document.getElementById("lightbox-img");
-        const closeBtn = document.querySelector(".lightbox .close");
+        let currentQuestion = 0;
+        let correctAnswers = 0;
+        let selectedAnswer = null;
 
-        // Attach to ALL images on the page
-        document.querySelectorAll("img").forEach(img => {
-            img.style.cursor = "pointer"; // show it's clickable
-            img.addEventListener("click", () => {
-            lightbox.style.display = "flex";
-            lightboxImg.src = img.src;
-            lightboxImg.alt = img.alt || "";
-            });
+        const quizQuestions = [
+        {
+            question: "What rank did Wojtek the bear achieve in the Polish Army?",
+            options: ["A) Private", "B) Corporal", "C) Sergeant", "D) Lieutenant"],
+            correct: 1,
+            explanation: "Wojtek started as a Private but was promoted to Corporal. He officially served in the 22nd Artillery Supply Company and helped carry ammunition during the Battle of Monte Cassino."
+        },
+        {
+            question: "What did the US military attach to bats during WWII?",
+            options: ["A) Cameras", "B) Incendiary bombs", "C) Radio transmitters", "D) Poison gas"],
+            correct: 1,
+            explanation: "Project X-Ray involved attaching tiny napalm incendiary devices to Mexican free-tailed bats, hoping they would roost in Japanese buildings and start fires."
+        },
+        {
+            question: "Which country used inflatable tanks to fool enemy reconnaissance?",
+            options: ["A) Germany", "B) United States", "C) Soviet Union", "D) Britain"],
+            correct: 1,
+            explanation: "The US 23rd Headquarters Special Troops, known as the 'Ghost Army,' used inflatable Sherman tanks and other deception tactics."
+        },
+        {
+            question: "What did the British hide explosives inside of?",
+            options: ["A) Dead rats", "B) Fake rocks", "C) Tree branches", "D) Cigarette packs"],
+            correct: 0,
+            explanation: "The SOE planned to hide explosives in dead rats, hoping German workers would shovel them into furnaces."
+        },
+        {
+            question: "What were the Soviet female night pilots called by the Germans?",
+            options: ["A) Sky Demons", "B) Night Witches", "C) Dark Angels", "D) Shadow Hawks"],
+            correct: 1,
+            explanation: "The Germans called them 'Nachthexen' (Night Witches) because of the whooshing sound their planes made during bombing runs."
+        }
+        ];
+
+        function selectAnswer(element, isCorrect) {
+        document.querySelectorAll('.quiz-option').forEach(option => {
+            option.style.background = '#5d6f5a';
+            option.style.border = '2px dashed #7a8471';
+        });
+        element.style.background = '#7a8471';
+        element.style.border = '2px solid #a8b5a0';
+        selectedAnswer = isCorrect;
+        }
+
+        function nextQuestion() {
+        const resultDiv = document.getElementById('quiz-result');
+        const btn = document.getElementById('quiz-btn');
+
+        if (selectedAnswer === null) {
+            resultDiv.innerHTML = '<span style="color: #ff6b35;">Please select an answer first!</span>';
+            return;
+        }
+
+        if (selectedAnswer) {
+            correctAnswers++;
+            resultDiv.innerHTML = '<span style="color: #7a8471;">✅ Correct!</span><br>' + quizQuestions[currentQuestion].explanation;
+        } else {
+            resultDiv.innerHTML = '<span style="color: #ff6b35;">❌ Incorrect.</span><br>' + quizQuestions[currentQuestion].explanation;
+        }
+
+        currentQuestion++;
+        updateStats();
+
+        if (currentQuestion < quizQuestions.length) {
+            setTimeout(() => {
+            loadNextQuestion();
+            }, 3000);
+            btn.textContent = 'Loading next question...';
+            btn.disabled = true;
+        } else {
+            setTimeout(() => {
+            showFinalResults();
+            }, 3000);
+            btn.textContent = 'Calculating final score...';
+            btn.disabled = true;
+        }
+        }
+
+        function loadNextQuestion() {
+        const question = quizQuestions[currentQuestion];
+        document.getElementById('quiz-question').textContent = question.question;
+
+        const optionsDiv = document.getElementById('quiz-options');
+        optionsDiv.innerHTML = '';
+
+        question.options.forEach((option, index) => {
+            const optionDiv = document.createElement('div');
+            optionDiv.className = 'quiz-option';
+            optionDiv.textContent = option;
+            optionDiv.onclick = () => selectAnswer(optionDiv, index === question.correct);
+            optionsDiv.appendChild(optionDiv);
         });
 
-        // Close button
-        closeBtn.addEventListener("click", () => {
-            lightbox.style.display = "none";
-        });
+        document.getElementById('quiz-result').innerHTML = '';
+        document.getElementById('quiz-btn').textContent = 'Submit Answer';
+        document.getElementById('quiz-btn').disabled = false;
 
-        // Close if clicking outside the image
-        lightbox.addEventListener("click", e => {
-            if (e.target === lightbox) {
-            lightbox.style.display = "none";
-            }
-        });
-    {);
 
-        // Close with Escape key
-        document.addEventListener("keydown", e => {
-            if (e.key === "Escape") {
-            lightbox.style.display = "none";
-            }
-        });
-        });
+    }
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97f260965039fb11',t:'MTc1Nzg3OTA0OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97f260965039fb11',t:'MTc1Nzg3OTA0OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
