@@ -1218,18 +1218,18 @@
         ];
 
         function selectAnswer(element, isCorrect) {
-        document.querySelectorAll('.quiz-option').forEach(option => {
-            option.style.background = '#5d6f5a';
-            option.style.border = '2px dashed #7a8471';
-        });
-        element.style.background = '#7a8471';
-        element.style.border = '2px solid #a8b5a0';
-        selectedAnswer = isCorrect;
+            document.querySelectorAll('.quiz-option').forEach(option => {
+                option.style.background = '#5d6f5a';
+                option.style.border = '2px dashed #7a8471';
+            });
+            element.style.background = '#7a8471';
+            element.style.border = '2px solid #a8b5a0';
+            selectedAnswer = isCorrect;
         }
 
         function nextQuestion() {
-        const resultDiv = document.getElementById('quiz-result');
-        const btn = document.getElementById('quiz-btn');
+            const resultDiv = document.getElementById('quiz-result');
+            const btn = document.getElementById('quiz-btn');
 
         if (selectedAnswer === null) {
             resultDiv.innerHTML = '<span style="color: #ff6b35;">Please select an answer first!</span>';
@@ -1259,14 +1259,13 @@
             btn.textContent = 'Calculating final score...';
             btn.disabled = true;
         }
-        }
-
+        
         function loadNextQuestion() {
-        const question = quizQuestions[currentQuestion];
-        document.getElementById('quiz-question').textContent = question.question;
+            const question = quizQuestions[currentQuestion];
+            document.getElementById('quiz-question').textContent = question.question;
         }
-        const optionsDiv = document.getElementById('quiz-options');
-        optionsDiv.innerHTML = '';
+            const optionsDiv = document.getElementById('quiz-options');
+            optionsDiv.innerHTML = '';
 
         question.options.forEach((option, index) => {
             const optionDiv = document.createElement('div');
@@ -1275,7 +1274,12 @@
             optionDiv.onclick = () => selectAnswer(optionDiv, index === question.correct);
             optionsDiv.appendChild(optionDiv);
         });
-
+        document.addEventListener("DOMContentLoaded", () => {
+            loadNextQuestion(); // load first question
+            document.getElementById('quiz-btn').onclick = nextQuestion;
+            document.getElementById('total-questions').textContent = quizQuestions.length;
+        });
+        
         document.getElementById('quiz-result').innerHTML = '';
         document.getElementById('quiz-btn').textContent = 'Submit Answer';
         document.getElementById('quiz-btn').disabled = false;
