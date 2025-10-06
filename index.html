@@ -404,18 +404,18 @@
             <div class="accessibility-group">
                 <label>Font Size</label>
                 <div class="accessibility-buttons">
-                    <button onclick="changeFontSize('small')" aria-label="Small font size">A</button>
-                    <button onclick="changeFontSize('normal')" class="active" aria-label="Normal font size">A</button>
-                    <button onclick="changeFontSize('large')" aria-label="Large font size">A</button>
+                    <button onclick="changeFontSize('small', this)" aria-label="Small font size">A</button>
+                    <button onclick="changeFontSize('normal', this)" class="active" aria-label="Normal font size">A</button>
+                    <button onclick="changeFontSize('large', this)" aria-label="Large font size">A</button>
                 </div>
             </div>
             
             <div class="accessibility-group">
                 <label>Contrast</label>
                 <div class="accessibility-buttons">
-                    <button onclick="changeContrast('normal')" class="active" aria-label="Normal contrast">Normal</button>
-                    <button onclick="changeContrast('high')" aria-label="High contrast">High</button>
-                    <button onclick="changeContrast('dark')" aria-label="Dark mode">Dark</button>
+                    <button onclick="changeContrast('normal', this)" class="active" aria-label="Normal contrast">Normal</button>
+                    <button onclick="changeContrast('high', this)" aria-label="High contrast">High</button>
+                    <button onclick="changeContrast('dark', this)" aria-label="Dark mode">Dark</button>
                 </div>
             </div>
             
@@ -482,8 +482,8 @@
                                 <div class="fact-card">
                                     <h3 class="center-text">From Well-Known Facts</h3>
                                     <figure class="gallery-card center-box center-text" style="margin-bottom: 1rem;">
-                                        <img src="assets/images/omaha_beach3.jpg" alt="D-Day soldiers storming Omaha Beach" class="center-image" style="object-fit: cover; width: 100%; height: 200px; border-radius: var(--radius);" />
-                                        <figcaption style="color: var(--accent); font-size: 0.95rem; margin-top: 0.5rem;">D-Day soldiers storming Omaha Beach</figcaption>
+                                        <img src="assets/images/omaha_beach2.jpg" alt="soldiers storming Omaha Beach" class="center-image" style="object-fit: cover; width: 100%; height: 200px; border-radius: var(--radius);" />
+                                        <figcaption style="color: var(--accent); font-size: 0.95rem; margin-top: 0.5rem;">soldiers storming Omaha Beach</figcaption>
                                     </figure>
                                     <h4 class="center-text">D-Day: The Normandy Landings</h4>
                                     <p><strong>June 6, 1944</strong> - Over 150,000 Allied troops landed on Normandy beaches in the largest seaborne invasion in history. Of the first waves, Company A, the 116th infantry regiment suffered a 90-96% casualty and was pretty much wiped out. The weather was so bad that German commanders thought no invasion would come...</p>
@@ -506,10 +506,10 @@
                                 <div class="fact-card">
                                     <h3>From Photo Gallery</h3>
                                     <figure class="gallery-card center-box center-text" style="margin-bottom: 1rem;">
-                                        <img src="assets/images/nightwitches4.jpg" alt="The Night Witches Soviet all female aerial bomber squadron" class="center-image" style="object-fit: cover; width: 100%; height: 200px; border-radius: var(--radius);">/" 
+                                        <img src="assets/images/nightwitches4.jpg" alt="The Night Witches Soviet all female aerial bomber squadron" class="center-image" style="object-fit: cover; width: 100%; height: 200px; border-radius: var(--radius);"/> 
                                         <figcaption style="color: var(--accent); font-size: 0.95rem; margin-top: 0.5rem;">The Night Witches Soviet squadron</figcaption>
                                     </figure>
-                                    <h4 class="center-text"></h4>The Night Witches Squadron</h4>
+                                    <h4 class="center-text">The Night Witches Squadron</h4>
                                     <p>Soviet female pilots flew over 23,000 combat missions in wooden biplanes. They flew at night without radios or parachutes, earning the nickname "Night Witches" from terrified German soldiers...</p>
                                     <button class="btn" onclick="showPage('gallery')" style="margin-top: 15px; cursor: pointer;">View Gallery →</button>
                                 </div>
@@ -572,7 +572,7 @@
                                     <h3>The Manhattan Project</h3>
                                     <figure class="gallery-card center-box center-text" style="margin-bottom: 1rem;">
                                         <img src="assets/images/manhattan_project.jpg" 
-                                            alt="The scientists from the Manhattan Project waiting for the opening of the Nuclear Institute"" 
+                                            alt="The scientists from the Manhattan Project waiting for the opening of the Nuclear Institute" 
                                             class="center-image" 
                                             style="object-fit: cover; width: 100%; height: 200px; border-radius: var(--radius);" />
                                         <figcaption style="color: var(--accent); font-size: 0.95rem; margin-top: 0.5rem;">
@@ -626,7 +626,9 @@
                             <p style="text-align: center; font-size: 1.1rem; margin-bottom: 30px; color: #a8b5a0;">
                                 The bizarre, unexpected, and downright weird stories from the war
                             </p>
-                            
+
+                            <div class="fact-grid">
+
                         <div class="fact-card">
                             <h3>Wojtek the Soldier Bear</h3>
                             <figure class="gallery-card center-box center-text" style="margin-bottom: 1rem;">
@@ -1026,7 +1028,7 @@
             content.classList.toggle('show');
         }
         
-        function changeFontSize(size) {
+    function changeFontSize(size, btn) {
             // Remove existing font size classes
             document.body.classList.remove('font-small', 'font-large');
             
@@ -1042,11 +1044,17 @@
                 document.body.classList.add('font-large');
             }
             
-            // Update active button
-            event.target.classList.add('active');
+            // Update active button (passed element or try to find matching button)
+            if (btn && btn.classList) {
+                btn.classList.add('active');
+            } else {
+                // Fallback: mark the button matching the size
+                const fallback = Array.from(document.querySelectorAll('.accessibility-buttons button')).find(b => b.getAttribute('onclick') && b.getAttribute('onclick').includes("changeFontSize('" + size + "')"));
+                if (fallback) fallback.classList.add('active');
+            }
         }
         
-        function changeContrast(mode) {
+    function changeContrast(mode, btn) {
             // Remove existing contrast classes
             document.body.classList.remove('high-contrast', 'dark-mode');
             
@@ -1062,8 +1070,14 @@
                 document.body.classList.add('dark-mode');
             }
             
-            // Update active button
-            event.target.classList.add('active');
+            // Update active button (passed element or try to find matching button)
+            if (btn && btn.classList) {
+                btn.classList.add('active');
+            } else {
+                // Fallback: mark the button matching the mode
+                const fallback = Array.from(document.querySelectorAll('.accessibility-buttons button')).find(b => b.getAttribute('onclick') && b.getAttribute('onclick').includes("changeContrast('" + mode + "')"));
+                if (fallback) fallback.classList.add('active');
+            }
         }
         
         function toggleAnimations() {
