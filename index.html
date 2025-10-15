@@ -440,6 +440,34 @@
             }
         }
             /* Quiz Styling */
+        /* Gallery index table */
+        .gallery-index {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+        }
+
+        .gallery-index th,
+        .gallery-index td {
+            padding: 8px 10px;
+            border-bottom: 1px solid #7a8471;
+            color: #e8f0e5;
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        .gallery-index th {
+            color: #ffd166;
+            font-weight: 600;
+        }
+
+        .gallery-index img.thumb {
+            width: 88px;
+            height: auto;
+            border-radius: 6px;
+            display: block;
+        }
+
         #quiz-section {
         background: #4a5c47;
         border: 2px dashed #7a8471;
@@ -1042,6 +1070,36 @@
                     <div class="container">
                         <div class="wireframe-box">
                             <h2 class="section-title">WWII Photo Gallery</h2>
+                            <!-- Gallery index table -->
+                            <table class="gallery-index" aria-label="Gallery index">
+                                <thead>
+                                    <tr>
+                                        <th>File</th>
+                                        <th>Preview</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td><a href="#img-wojtek">wojtek.jpg</a></td><td><a href="#img-wojtek"><img class="thumb" src="assets/images/wojtek.jpg" alt="wojtek thumbnail"></a></td></tr>
+                                    <tr><td><a href="#img-wojtek2">wojtek2.jpg</a></td><td><a href="#img-wojtek2"><img class="thumb" src="assets/images/wojtek2.jpg" alt="wojtek2 thumbnail"></a></td></tr>
+                                    <tr><td><a href="#img-nightwitches">nightwitches.jpg</a></td><td><a href="#img-nightwitches"><img class="thumb" src="assets/images/nightwitches.jpg" alt="nightwitches thumbnail"></a></td></tr>
+                                    <tr><td><a href="#img-nightwitches3">nightwitches3.jpg</a></td><td><a href="#img-nightwitches3"><img class="thumb" src="assets/images/nightwitches3.jpg" alt="nightwitches3 thumbnail"></a></td></tr>
+                                    <tr><td><a href="#img-nightwitches2">nightwitches2.jpg</a></td><td><a href="#img-nightwitches2"><img class="thumb" src="assets/images/nightwitches2.jpg" alt="nightwitches2 thumbnail"></a></td></tr>
+                                    <tr><td><a href="#img-v2_rocket">v2_rocket.jpg</a></td><td><a href="#img-v2_rocket"><img class="thumb" src="assets/images/v2_rocket.jpg" alt="v2_rocket thumbnail"></a></td></tr>
+                                    <tr><td><a href="#img-v2_rocket2">v2_rocket2.jpg</a></td><td><a href="#img-v2_rocket2"><img class="thumb" src="assets/images/v2_rocket2.jpg" alt="v2_rocket2 thumbnail"></a></td></tr>
+                                    <tr><td><a href="#img-v2_rocket3">v2_rocket3.jpg</a></td><td><a href="#img-v2_rocket3"><img class="thumb" src="assets/images/v2_rocket3.jpg" alt="v2_rocket3 thumbnail"></a></td></tr>
+                                    <tr><td><a href="#img-ghost_army">ghost_army.jpg</a></td><td><a href="#img-ghost_army"><img class="thumb" src="assets/images/ghost_army.jpg" alt="ghost_army thumbnail"></a></td></tr>
+                                    <tr><td><a href="#img-ghost_army2">ghost_army2.jpg</a></td><td><a href="#img-ghost_army2"><img class="thumb" src="assets/images/ghost_army2.jpg" alt="ghost_army2 thumbnail"></a></td></tr>
+                                    <tr><td><a href="#img-bat_bombs2">bat_bombs2.jpg</a></td><td><a href="#img-bat_bombs2"><img class="thumb" src="assets/images/bat_bombs2.jpg" alt="bat_bombs2 thumbnail"></a></td></tr>
+                                    <tr><td><a href="#img-bat_bombs3">bat_bombs3.jpg</a></td><td><a href="#img-bat_bombs3"><img class="thumb" src="assets/images/bat_bombs3.jpg" alt="bat_bombs3 thumbnail"></a></td></tr>
+                                    <tr><td><a href="#img-bat_bombs">bat_bombs.jpg</a></td><td><a href="#img-bat_bombs"><img class="thumb" src="assets/images/bat_bombs.jpg" alt="bat_bombs thumbnail"></a></td></tr>
+                                    <tr><td><a href="#img-habakkuk">habakkuk.jpg</a></td><td><a href="#img-habakkuk"><img class="thumb" src="assets/images/habakkuk.jpg" alt="habakkuk thumbnail"></a></td></tr>
+                                    <tr><td><a href="#img-habakkuk3">habakkuk3.jpg</a></td><td><a href="#img-habakkuk3"><img class="thumb" src="assets/images/habakkuk3.jpg" alt="habakkuk3 thumbnail"></a></td></tr>
+                                    <tr><td><a href="#img-project_pigeon">project_pigeon.jpg</a></td><td><a href="#img-project_pigeon"><img class="thumb" src="assets/images/project_pigeon.jpg" alt="project_pigeon thumbnail"></a></td></tr>
+                                    <tr><td><a href="#img-project_pigeon2">project_pigeon2.jpg</a></td><td><a href="#img-project_pigeon2"><img class="thumb" src="assets/images/project_pigeon2.jpg" alt="project_pigeon2 thumbnail"></a></td></tr>
+                                    <tr><td><a href="#img-project_pigeon3">project_pigeon3.jpg</a></td><td><a href="#img-project_pigeon3"><img class="thumb" src="assets/images/project_pigeon3.jpg" alt="project_pigeon3 thumbnail"></a></td></tr>
+                                    <tr><td><a href="#img-project_pigeon4">project_pigeon4.jpg</a></td><td><a href="#img-project_pigeon4"><img class="thumb" src="assets/images/project_pigeon4.jpg" alt="project_pigeon4 thumbnail"></a></td></tr>
+                                </tbody>
+                            </table>
                             <p style="text-align: center; font-size: 1.1rem; margin-bottom: 30px; color: #a8b5a0;">
                                 Rare and fascinating photographs from the war's most unusual moments
                             </p>
@@ -1051,7 +1109,7 @@
                                 <h3 class="center-text">Wojtek: The Soldier Bear</h3>
 
                                 <figure class="gallery-card center-box center-text" style="margin-bottom: 1rem;">
-                                    <img src="assets/images/wojtek.jpg"
+                                    <img id="img-wojtek" src="assets/images/wojtek.jpg"
                                         alt="Wojtek helping carry artillery shells during the Battle of Monte Cassino"
                                         class="gallery-image" />
                                     <figcaption style="color: var(--accent); font-size: 1rem; margin-top: 0.5rem;">
@@ -1060,7 +1118,7 @@
                                 </figure>
 
                                 <figure class="gallery-card center-box center-text" style="margin-bottom: 1rem;">
-                                    <img src="assets/images/wojtek2.jpg"
+                                    <img id="img-wojtek2" src="assets/images/wojtek2.jpg"
                                         alt="Wojtek the bear in Polish Army uniform with fellow soldiers"
                                         class="gallery-image" />
                                     <figcaption style="color: var(--accent); font-size: 1rem; margin-top: 0.5rem;">
@@ -1076,7 +1134,7 @@
                                 <h3 class="center-text">588th Night Bomber Regiment</h3>
 
                                 <figure class="gallery-card center-box center-text" style="margin-bottom: 1rem;">
-                                    <img src="assets/images/nightwitches.jpg"
+                                    <img id="img-nightwitches" src="assets/images/nightwitches.jpg"
                                         alt="Soviet female pilots with their Po-2 biplanes"
                                         class="gallery-image" />
                                     <figcaption style="color: var(--accent); font-size: 1rem; margin-top: 0.5rem;">
@@ -1085,7 +1143,7 @@
                                 </figure>
 
                                 <figure class="gallery-card center-box center-text" style="margin-bottom: 1rem;">
-                                    <img src="assets/images/nightwitches3.jpg"
+                                    <img id="img-nightwitches3" src="assets/images/nightwitches3.jpg"
                                         alt="Squadron members planning their next night mission, 1943"
                                         class="gallery-image" />
                                     <figcaption style="color: var(--accent); font-size: 1rem; margin-top: 0.5rem;">
@@ -1094,7 +1152,7 @@
                                 </figure>
 
                                 <figure class="gallery-card center-box center-text" style="margin-bottom: 1rem;">
-                                    <img src="assets/images/nightwitches2.jpg"
+                                    <img id="img-nightwitches2" src="assets/images/nightwitches2.jpg"
                                         alt="Teenage pilots of the 588th Regiment, known as the Night Witches"
                                         class="gallery-image" />
                                     <figcaption style="color: var(--accent); font-size: 1rem; margin-top: 0.5rem;">
@@ -1107,7 +1165,7 @@
                                 <h3>V-2 Rocket: Dawn of the Space Age</h3>
 
                                 <figure class="gallery-card center-box center-text" style="margin-bottom: 1rem;">
-                                    <img src="assets/images/v2_rocket.jpg"
+                                    <img id="img-v2_rocket" src="assets/images/v2_rocket.jpg"
                                         alt="V-2 rocket on launch pad with German technicians"
                                         class="gallery-image" />
                                     <figcaption style="color: var(--accent); font-size: 1rem; margin-top: 0.5rem;">
@@ -1116,7 +1174,7 @@
                                 </figure>
 
                                 <figure class="gallery-card center-box center-text" style="margin-bottom: 1rem;">
-                                    <img src="assets/images/v2_rocket2.jpg"
+                                    <img id="img-v2_rocket2" src="assets/images/v2_rocket2.jpg"
                                         alt="V-2 rocket being launched at Peenemünde, 1944"
                                         class="gallery-image" />
                                     <figcaption style="color: var(--accent); font-size: 1rem; margin-top: 0.5rem;">
@@ -1126,7 +1184,7 @@
                                     <p><strong>Vergeltungswaffe 2</strong> – The world's first operational ballistic missile, developed by Wernher von Braun's team. These rockets could reach the edge of space and travel at 3,500 mph.</p>
                                     <p>Over 3,000 V-2s were launched, mostly at London and Antwerp. After the war, both the US and Soviet space programs were built on captured V-2 technology and German rocket scientists. The same rockets that terrorized London eventually took humans to the moon.</p>
                                 <figure class="gallery-card center-box center-text" style="margin-bottom: 1rem;">
-                                    <img src="assets/images/v2_rocket3.jpg"
+                                    <img id="img-v2_rocket3" src="assets/images/v2_rocket3.jpg"
                                         alt="German technicians V-2 rocket for launch"
                                         class="gallery-image" />
                                     <figcaption style="color: var(--accent); font-size: 1rem; margin-top: 0.5rem;">
@@ -1138,7 +1196,7 @@
                                 <div class="fact-card">
                                     <h3>The Ghost Army in Action</h3>
                                     <figure class="gallery-card center-box center-text" style="margin-bottom: 1rem;">
-                                        <img src="assets/images/ghost_army.jpg"
+                                        <img id="img-ghost_army" src="assets/images/ghost_army.jpg"
                                             alt="The soldiers of the Ghost Army"
                                             class="gallery-image" />
                                         <figcaption style="color: var(--accent); font-size: 1rem; margin-top: 0.5rem;">
@@ -1149,7 +1207,7 @@
                                     <p>The unit traveled with a complete fake army: inflatable vehicles, dummy landing craft, fake radio networks, and sound trucks that could simulate the noise of entire armored divisions. Their deceptions saved countless lives during D-Day and other operations.</p>
                                     <p><em>Photo shows: Ghost Army soldiers inflating a fake tank in France, 1944</em></p>
                                 <figure class="gallery-card center-box center-text" style="margin-bottom: 1rem;">
-                                    <img src="assets/images/ghost_army2.jpg"
+                                    <img id="img-ghost_army2" src="assets/images/ghost_army2.jpg"
                                         alt="Ghost Army inflatable tank being set up by soldiers"
                                         class="gallery-image" />
                                     <figcaption style="color: var(--accent); font-size: 1rem; margin-top: 0.5rem;">
@@ -1161,7 +1219,7 @@
                                 <div class="fact-card">
                                     <h3>Project X-Ray Test Facility</h3>
                                     <figure class="gallery-card center-box center-text" style="margin-bottom: 1rem;">
-                                        <img src="assets/images/bat_bombs2.jpg"
+                                        <img id="img-bat_bombs2" src="assets/images/bat_bombs2.jpg"
                                             alt="Scientists preparing bats for Project X-Ray testing"
                                             class="gallery-image" />
                                         <figcaption style="color: var(--accent); font-size: 1rem; margin-top: 0.5rem;">
@@ -1171,7 +1229,7 @@
                                     <p>The bats were kept in refrigerated containers to make them hibernate, then released at dawn when they would naturally seek dark places to roost. Unfortunately, during one test, armed bats escaped and burned down the testing facility.</p>
                                     <p><em>Photo shows: Dr. Lytle Adams examining bat carriers at Carlsbad, 1943</em></p>
                                 <figure class="gallery-card center-box center-text" style="margin-bottom: 1rem;">
-                                    <img src="assets/images/bat_bombs3.jpg"
+                                    <img id="img-bat_bombs3" src="assets/images/bat_bombs3.jpg"
                                         alt="Bats that are destined for Project X-Ray"
                                         class="gallery-image" />
                                     <figcaption style="color: var(--accent); font-size: 1rem; margin-top: 0.5rem;">
@@ -1182,7 +1240,7 @@
                                     <p>catching them on fire. The damage caused by the fire was so severe that they scrapped the program altogether.</p>
                                     <p>They felt this showed how uncontrollable the bats were and that they could not be directed to their targets properly.</p>
                                 <figure class="gallery-card center-box center-text" style="margin-bottom: 1rem;">
-                                    <img src="assets/images/bat_bombs.jpg"
+                                    <img id="img-bat_bombs" src="assets/images/bat_bombs.jpg"
                                         alt="Cute bat armed with tiny bomb for Project X-Ray"
                                         class="gallery-image" />
                                     <figcaption style="color: var(--accent); font-size: 1rem; margin-top: 0.5rem;">
@@ -1194,7 +1252,7 @@
                                 <div class="fact-card">
                                     <h3>HMS Habakkuk Ice Ship Model</h3>
                                     <figure class="gallery-card center-box center-text" style="margin-bottom: 1rem;">
-                                        <img src="assets/images/habakkuk.jpg"
+                                        <img id="img-habakkuk" src="assets/images/habakkuk.jpg"
                                             alt="The Habakkuk prototype in open water, Alberta, 1943"
                                             class="gallery-image" />
                                         <figcaption style="color: var(--accent); font-size: 1rem; margin-top: 0.5rem;">
@@ -1204,7 +1262,7 @@
                                     <p>The prototype proved that pykrete was incredibly strong and could support enormous weight. However, the full-size ship would have been 2,000 feet long and required massive refrigeration systems. The project was abandoned when conventional carriers became available.</p>
                                     <p>It took over three years for it to melt.</p>
                                 <figure class="gallery-card center-box center-text" style="margin-bottom: 1rem;">
-                                    <img src="assets/images/habakkuk3.jpg"
+                                    <img id="img-habakkuk3" src="assets/images/habakkuk3.jpg"
                                         alt="Schematics of the full-size Habakkuk ice aircraft carrier"
                                         class="gallery-image" />
                                     <figcaption style="color: var(--accent); font-size: 1rem; margin-top: 0.5rem;">
@@ -1216,7 +1274,7 @@
                                 <div class="fact-card">
                                     <h3>Project Pigeon Training Center</h3>
                                     <figure class="gallery-card center-box center-text" style="margin-bottom: 1rem;">
-                                        <img src="assets/images/project_pigeon.jpg" 
+                                        <img id="img-project_pigeon" src="assets/images/project_pigeon.jpg" 
                                             alt="B.F. Skinner’s Project Pigeon experimental missile guidance system" 
                                             class="gallery-image" />
                                     <figcaption style="color: var(--accent); font-size: 1rem; margin-top: 0.5rem;">
@@ -1225,7 +1283,7 @@
                                     </figure>
 
                                     <figure class="gallery-card center-box center-text" style="margin-bottom: 1rem;">
-                                        <img src="assets/images/project_pigeon2.jpg" 
+                        <img id="img-project_pigeon2" src="assets/images/project_pigeon2.jpg" 
                                             alt="Pigeon training chamber used in Project Pigeon experiments" 
                                             class="gallery-image" />
                                     <figcaption style="color: var(--accent); font-size: 1rem; margin-top: 0.5rem;">
@@ -1234,7 +1292,7 @@
                                     </figure>
 
                                     <figure class="gallery-card center-box center-text" style="margin-bottom: 1rem;">
-                                        <img src="assets/images/project_pigeon3.jpg" 
+                        <img id="img-project_pigeon3" src="assets/images/project_pigeon3.jpg" 
                                             alt="Diagram showing pigeons pecking at a screen to guide a missile" 
                                             class="gallery-image" />
                                     <figcaption style="color: var(--accent); font-size: 1rem; margin-top: 0.5rem;">
@@ -1243,7 +1301,7 @@
                                     </figure>
 
                                     <figure class="gallery-card center-box center-text" style="margin-bottom: 1rem;">
-                                        <img src="assets/images/project_pigeon4.jpg" 
+                        <img id="img-project_pigeon4" src="assets/images/project_pigeon4.jpg" 
                                             alt="Historical photo of pigeons being conditioned for Project Pigeon" 
                                             class="gallery-image" />
                                     <figcaption style="color: var(--accent); font-size: 1rem; margin-top: 0.5rem;">
