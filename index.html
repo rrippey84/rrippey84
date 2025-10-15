@@ -24,11 +24,7 @@
             margin: 0 auto;
             padding: 0 20px;
         }
-        
-        
-        
-        
-        
+         
         /* Header */
         .header {
             background: #1a2518;
@@ -185,7 +181,19 @@
             outline: 3px solid #a8b5a0;
             outline-offset: 2px;
         }
-       /* Footer */
+       
+        .video-center {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+        }
+
+        .video-center iframe {
+        display: block;
+        max-width: 100%;
+        }
+
+        /* Footer */
         .footer {
             background: #1a2518;
             color: #e8f0e5;
@@ -431,6 +439,79 @@
                 min-width: 200px;
             }
         }
+            /* Quiz Styling */
+        #quiz-section {
+        background: #4a5c47;
+        border: 2px dashed #7a8471;
+        border-radius: 8px;
+        padding: 20px;
+        margin-top: 40px;
+        color: #e8f0e5;
+        }
+
+        #quiz-section h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        color: #ffd166; /* warm gold highlight */
+        }
+
+        #quiz-container h3 {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+        color: #e8f0e5;
+        }
+
+        #quiz-container label {
+        display: block;
+        margin: 8px 0;
+        cursor: pointer;
+        }
+
+        #quiz-container input[type="radio"] {
+        margin-right: 8px;
+        transform: scale(1.2);
+        }
+
+        #quiz-container button,
+        #saveScoreBtn {
+        background: #7a8471;
+        color: #fff;
+        border: none;
+        padding: 10px 18px;
+        margin-top: 15px;
+        border-radius: 4px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.3s;
+        }
+
+        #quiz-container button:hover,
+        #saveScoreBtn:hover {
+        background: #5d6f5a;
+        }
+
+        #quiz-container p {
+        margin-top: 15px;
+        font-size: 1rem;
+        }
+
+        #score-section h3 {
+        color: #ffd166;
+        margin-bottom: 10px;
+        }
+
+        #scoreList {
+        list-style: none;
+        padding: 0;
+        margin-top: 10px;
+        }
+
+        #scoreList li {
+        background: #5d6f5a;
+        margin: 5px 0;
+        padding: 8px;
+        border-radius: 4px;
+        }
     </style>
 </head>
 <body>
@@ -505,17 +586,12 @@
                             <button class="nav-item" type="button" onclick="showPage('facts')" aria-label="Well-Known Facts">[Well-Known Facts]</button>
                             <button class="nav-item" type="button" onclick="showPage('oddities')" aria-label="Strange Oddities">[Strange Oddities]</button>
                             <button class="nav-item" type="button" onclick="showPage('gallery')" aria-label="Photo Gallery">[Photo Gallery]</button>
+                            <button class="nav-item" type="button" onclick="showPage('quiz')" aria-label="Quiz">[Quiz]</button>
                             <button class="nav-item" type="button" onclick="showPage('dark')" aria-label="Dark Discoveries" style="border-color: #ff6b35; color: #ff6b35;">[Dark Discoveries ⚠️]</button>
                         </div>
                     </div>
                 </div>
-                <iframe width="992" height="699"
-                    src="https://www.youtube.com/embed/PWmHCmf09cA"
-                    title="Nazis &amp; the Occult: The Truth Behind the Indiana Jones Myth #OOTD #shorts"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"
-                    allowfullscreen>
-                </iframe>
+                
                 <!-- Homepage Sampler -->
                 <div id="home-page" class="content-page page-section">
                     <div class="container">
@@ -524,7 +600,16 @@
                             <p style="text-align: center; font-size: 1.2rem; margin-bottom: 40px; color: #a8b5a0;">
                                 Get a taste of the incredible, bizarre, and forgotten tales from the war
                             </p>
-                            
+                            <div class="video-center">
+                                <iframe width="992" height="699"
+                                    src="https://www.youtube.com/embed/PWmHCmf09cA"
+                                    title="Nazis &amp; the Occult: The Truth Behind the Indiana Jones Myth #OOTD #shorts"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin"
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
                             <!-- Sampler Grid -->
                             <div class="fact-grid">
                                 <!-- Well-Known Facts Sampler -->
@@ -787,6 +872,33 @@
                                     <p>British inventor Geoffrey Pyke proposed building aircraft carriers out of "pykrete" - a mixture of ice and wood pulp that was stronger than concrete and unsinkable. These ice ships would be 2,000 feet long and virtually indestructible.</p>
                                     <p>Churchill was so excited by the idea that he demonstrated pykrete's strength by firing a revolver at a block of it during a meeting - the bullet bounced off and nearly hit an admiral. A prototype was built in Canada, but the project was abandoned when it became clear that the ships would require enormous refrigeration systems.</p>
                                     <p><em>The prototype took three summers to fully melt, proving the concept worked!</em></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quiz Page -->
+                <div id="quiz-page" class="content-page page-section" style="display: none;">
+                    <div class="container">
+                        <div class="wireframe-box">
+                            <h2 class="section-title">WWII Knowledge Quiz</h2>
+                            <div class="fact-card">
+                                <div id="quiz-container"></div>
+                                <div id="score-section" style="display:none; margin-top:20px;">
+                                    <h3>Your Score</h3>
+                                    <p id="final-score"></p>
+
+                                    <div id="save-form">
+                                        <label for="playerName">Save your score:</label><br>
+                                        <input type="text" id="playerName" placeholder="Enter your name">
+                                        <button id="saveScoreBtn" type="button">Submit</button>
+                                    </div>
+
+                                    <h4>Top 5 Scores</h4>
+                                    <ol id="scoreList"></ol>
+
+                                    <button id="retakeBtn" style="display:none; margin-top:15px;">Retake Quiz</button>
                                 </div>
                             </div>
                         </div>
@@ -1216,6 +1328,10 @@
             const targetPage = document.getElementById(pageId + '-page');
             if (targetPage) {
                 targetPage.style.display = 'block';
+                // If the quiz page was requested, attempt to start the quiz (startQuiz is attached to window in DOMContentLoaded)
+                if (pageId === 'quiz' && typeof window.startQuiz === 'function') {
+                    window.startQuiz();
+                }
             }
         }
         
@@ -1239,7 +1355,7 @@
             }
         }
         
-    function changeFontSize(size, btn) {
+        function changeFontSize(size, btn) {
             // Remove existing font size classes
             document.body.classList.remove('font-small', 'font-large');
             
@@ -1265,7 +1381,7 @@
             }
         }
         
-    function changeContrast(mode, btn) {
+        function changeContrast(mode, btn) {
             // Remove existing contrast classes
             document.body.classList.remove('high-contrast', 'dark-mode');
             
@@ -1402,6 +1518,171 @@
                     if (closeBtn) closeBtn.click();
                 }
             });
+
+            const questionsPool = [
+            { question: "On which date did D-Day take place?",
+                options: ["June 6, 1944", "May 8, 1945", "December 7, 1941", "August 6, 1945"],
+                answer: "June 6, 1944",
+                fact: "D-Day was the largest seaborne invasion in history, involving over 150,000 Allied troops." },
+            { question: "What was the nickname of the Soviet all-female night bomber regiment?",
+                options: ["Iron Maidens", "Night Witches", "Red Valkyries", "Black Widows"],
+                answer: "Night Witches",
+                fact: "The Germans gave them the nickname because their planes made a broomstick-like whooshing sound." },
+            { question: "Which surprise attack brought the U.S. into WWII?",
+                options: ["Battle of Midway", "Pearl Harbor", "Battle of the Bulge", "Stalingrad"],
+                answer: "Pearl Harbor",
+                fact: "The attack on December 7, 1941, sank or damaged 18 U.S. warships and killed over 2,400 Americans." },
+            { question: "Which bear became famous for carrying ammunition in WWII?",
+                options: ["Baloo", "Paddington", "Wojtek", "Smokey"],
+                answer: "Wojtek",
+                fact: "Wojtek was officially enlisted in the Polish Army and helped carry artillery shells at Monte Cassino." },
+            { question: "What was the codename for the atomic bomb project?",
+                options: ["Operation Overlord", "Project X-Ray", "The Manhattan Project", "Operation Torch"],
+                answer: "The Manhattan Project",
+                fact: "The project employed over 130,000 people and cost about $28 billion in today’s money." },
+            { question: "Which battle is considered the turning point on the Eastern Front?",
+                options: ["Battle of Kursk", "Battle of Stalingrad", "Battle of Moscow", "Battle of Leningrad"],
+                answer: "Battle of Stalingrad",
+                fact: "The German 6th Army was encircled and destroyed, shattering Germany’s aura of invincibility." },
+            { question: "What unusual weapon idea involved bats carrying incendiary bombs?",
+                options: ["Project Batfire", "Project X-Ray", "Operation Firestorm", "Bat Blitz"],
+                answer: "Project X-Ray",
+                fact: "Some bats escaped during testing and accidentally burned down part of the U.S. base." },
+            { question: "Which British deception unit used inflatable tanks and sound effects?",
+                options: ["Phantom Corps", "Ghost Army", "Shadow Division", "Illusion Brigade"],
+                answer: "Ghost Army",
+                fact: "The Ghost Army’s inflatable tanks and fake radio chatter saved thousands of lives." },
+            { question: "Which city endured 57 consecutive nights of bombing in 1940–41?",
+                options: ["Paris", "Berlin", "London", "Warsaw"],
+                answer: "London",
+                fact: "The Blitz killed over 40,000 civilians and destroyed more than a million homes." },
+            { question: "What was the name of the ice aircraft carrier project?",
+                options: ["Project Iceberg", "Project Habakkuk", "Operation Frost", "Arctic Shield"],
+                answer: "Project Habakkuk",
+                fact: "It was to be built from pykrete, a mix of ice and wood pulp, but was abandoned due to logistics." }
+            ];
+
+            let selectedQuestions = [];
+            let currentQuestionIndex = 0;
+            let score = 0;
+            let scores = [];
+
+            // load saved scores from localStorage if present
+            function loadScores() {
+                try {
+                    const raw = localStorage.getItem('wwii_scores');
+                    if (raw) scores = JSON.parse(raw);
+                } catch (e) {
+                    scores = [];
+                }
+                renderScores();
+            }
+
+            function saveScoresToStorage() {
+                try {
+                    localStorage.setItem('wwii_scores', JSON.stringify(scores));
+                } catch (e) {
+                    // ignore storage errors
+                }
+            }
+
+            function renderScores() {
+                const list = document.getElementById('scoreList');
+                if (!list) return;
+                list.innerHTML = '';
+                scores.forEach((s, i) => {
+                    const li = document.createElement('li');
+                    li.textContent = `${i+1}. ${s.name}: ${s.score}`;
+                    list.appendChild(li);
+                });
+            }
+
+            function startQuiz() {
+                selectedQuestions = questionsPool.sort(() => 0.5 - Math.random()).slice(0,5);
+                currentQuestionIndex = 0;
+                score = 0;
+                document.getElementById("quiz-container").innerHTML = "";
+                document.getElementById("score-section").style.display = "none";
+                showQuestion();
+                }
+
+            // expose startQuiz globally so other functions can call it (e.g., showPage)
+            window.startQuiz = startQuiz;
+
+            function showQuestion() {
+                const container = document.getElementById("quiz-container");
+                container.innerHTML = "";
+                    if (currentQuestionIndex < selectedQuestions.length) {
+                        const q = selectedQuestions[currentQuestionIndex];
+                        const qElem = document.createElement("div");
+                        qElem.innerHTML = `<h3>${q.question}</h3>`;
+                        q.options.forEach(opt => {
+                        const label = document.createElement("label");
+                        label.style.display = "block";
+                        label.innerHTML = `<input type="radio" name="option" value="${opt}"> ${opt}`;
+                        qElem.appendChild(label);
+                        });
+                        const btn = document.createElement("button");
+                        btn.textContent = "Submit Answer";
+                        btn.onclick = checkAnswer;
+                        qElem.appendChild(btn);
+                        container.appendChild(qElem);
+                    } else {
+                endQuiz();
+                }
+            }
+
+            function checkAnswer() {
+                const selected = document.querySelector('input[name="option"]:checked');
+                if (!selected) return;
+                    const answer = selected.value;
+                    const q = selectedQuestions[currentQuestionIndex];
+                    const container = document.getElementById("quiz-container");
+                    let feedback = document.createElement("p");
+                if (answer === q.answer) {
+                    score++;
+                    feedback.textContent = `✅ Correct! ${q.fact}`;
+                } else {
+                    feedback.textContent = `❌ Wrong. The correct answer was "${q.answer}". ${q.fact}`;
+                }
+                container.appendChild(feedback);
+                currentQuestionIndex++;
+                setTimeout(showQuestion, 2500);
+                }
+
+            function endQuiz() {
+                document.getElementById("quiz-container").innerHTML = "";
+                document.getElementById("score-section").style.display = "block";
+                document.getElementById("final-score").textContent = `You scored ${score} out of ${selectedQuestions.length}.`;
+                document.getElementById("save-form").style.display = "block"; // reset form visible
+                // show retake button immediately so users can retake without saving
+                document.getElementById("retakeBtn").style.display = "inline-block";
+                // render top scores so they are visible at end even if user doesn't save
+                renderScores();
+                }
+
+                document.getElementById("saveScoreBtn").addEventListener("click", () => {
+                const name = document.getElementById("playerName").value.trim();
+                if (name) {
+                    scores.push({name, score});
+                    scores.sort((a,b) => b.score - a.score);
+                    scores = scores.slice(0,5); // keep top 5 only
+                    saveScoresToStorage();
+                    renderScores();
+
+                    // hide the form after submit
+                    document.getElementById("save-form").style.display = "none";
+                    // show retake button
+                    document.getElementById("retakeBtn").style.display = "inline-block";
+                }
+            });
+
+            document.getElementById("retakeBtn").addEventListener("click", () => {
+                startQuiz();
+            });
+
+            // render any previously saved scores on load
+            loadScores();
         });
     </script>
 </body>
