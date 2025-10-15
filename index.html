@@ -449,23 +449,44 @@
 
         .gallery-index th,
         .gallery-index td {
-            padding: 8px 10px;
+            padding: 4px 6px;
             border-bottom: 1px solid #7a8471;
             color: #e8f0e5;
             text-align: left;
             vertical-align: middle;
+            font-size: 0.85rem;
         }
 
         .gallery-index th {
             color: #ffd166;
             font-weight: 600;
+            font-size: 0.85rem;
         }
 
-        .gallery-index img.thumb {
-            width: 88px;
-            height: auto;
-            border-radius: 6px;
-            display: block;
+        /* compact gallery index as a simple filename list */
+        .gallery-index-list {
+            list-style: none;
+            padding: 0;
+            margin: 12px 0 18px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 14px;
+        }
+
+        .gallery-index-list li {
+            background: transparent;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        .gallery-index-list a {
+            color: #ffd166;
+            text-decoration: none;
+        }
+
+        .gallery-index-list a:hover {
+            text-decoration: underline;
         }
 
         #quiz-section {
@@ -1070,39 +1091,33 @@
                     <div class="container">
                         <div class="wireframe-box">
                             <h2 class="section-title">WWII Photo Gallery</h2>
-                            <!-- Gallery index table -->
-                            <table class="gallery-index" aria-label="Gallery index">
-                                <thead>
-                                    <tr>
-                                        <th>File</th>
-                                        <th>Preview</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td><a href="#img-wojtek">wojtek.jpg</a></td><td><a href="#img-wojtek"><img class="thumb" src="assets/images/wojtek.jpg" alt="wojtek thumbnail"></a></td></tr>
-                                    <tr><td><a href="#img-wojtek2">wojtek2.jpg</a></td><td><a href="#img-wojtek2"><img class="thumb" src="assets/images/wojtek2.jpg" alt="wojtek2 thumbnail"></a></td></tr>
-                                    <tr><td><a href="#img-nightwitches">nightwitches.jpg</a></td><td><a href="#img-nightwitches"><img class="thumb" src="assets/images/nightwitches.jpg" alt="nightwitches thumbnail"></a></td></tr>
-                                    <tr><td><a href="#img-nightwitches3">nightwitches3.jpg</a></td><td><a href="#img-nightwitches3"><img class="thumb" src="assets/images/nightwitches3.jpg" alt="nightwitches3 thumbnail"></a></td></tr>
-                                    <tr><td><a href="#img-nightwitches2">nightwitches2.jpg</a></td><td><a href="#img-nightwitches2"><img class="thumb" src="assets/images/nightwitches2.jpg" alt="nightwitches2 thumbnail"></a></td></tr>
-                                    <tr><td><a href="#img-v2_rocket">v2_rocket.jpg</a></td><td><a href="#img-v2_rocket"><img class="thumb" src="assets/images/v2_rocket.jpg" alt="v2_rocket thumbnail"></a></td></tr>
-                                    <tr><td><a href="#img-v2_rocket2">v2_rocket2.jpg</a></td><td><a href="#img-v2_rocket2"><img class="thumb" src="assets/images/v2_rocket2.jpg" alt="v2_rocket2 thumbnail"></a></td></tr>
-                                    <tr><td><a href="#img-v2_rocket3">v2_rocket3.jpg</a></td><td><a href="#img-v2_rocket3"><img class="thumb" src="assets/images/v2_rocket3.jpg" alt="v2_rocket3 thumbnail"></a></td></tr>
-                                    <tr><td><a href="#img-ghost_army">ghost_army.jpg</a></td><td><a href="#img-ghost_army"><img class="thumb" src="assets/images/ghost_army.jpg" alt="ghost_army thumbnail"></a></td></tr>
-                                    <tr><td><a href="#img-ghost_army2">ghost_army2.jpg</a></td><td><a href="#img-ghost_army2"><img class="thumb" src="assets/images/ghost_army2.jpg" alt="ghost_army2 thumbnail"></a></td></tr>
-                                    <tr><td><a href="#img-bat_bombs2">bat_bombs2.jpg</a></td><td><a href="#img-bat_bombs2"><img class="thumb" src="assets/images/bat_bombs2.jpg" alt="bat_bombs2 thumbnail"></a></td></tr>
-                                    <tr><td><a href="#img-bat_bombs3">bat_bombs3.jpg</a></td><td><a href="#img-bat_bombs3"><img class="thumb" src="assets/images/bat_bombs3.jpg" alt="bat_bombs3 thumbnail"></a></td></tr>
-                                    <tr><td><a href="#img-bat_bombs">bat_bombs.jpg</a></td><td><a href="#img-bat_bombs"><img class="thumb" src="assets/images/bat_bombs.jpg" alt="bat_bombs thumbnail"></a></td></tr>
-                                    <tr><td><a href="#img-habakkuk">habakkuk.jpg</a></td><td><a href="#img-habakkuk"><img class="thumb" src="assets/images/habakkuk.jpg" alt="habakkuk thumbnail"></a></td></tr>
-                                    <tr><td><a href="#img-habakkuk3">habakkuk3.jpg</a></td><td><a href="#img-habakkuk3"><img class="thumb" src="assets/images/habakkuk3.jpg" alt="habakkuk3 thumbnail"></a></td></tr>
-                                    <tr><td><a href="#img-project_pigeon">project_pigeon.jpg</a></td><td><a href="#img-project_pigeon"><img class="thumb" src="assets/images/project_pigeon.jpg" alt="project_pigeon thumbnail"></a></td></tr>
-                                    <tr><td><a href="#img-project_pigeon2">project_pigeon2.jpg</a></td><td><a href="#img-project_pigeon2"><img class="thumb" src="assets/images/project_pigeon2.jpg" alt="project_pigeon2 thumbnail"></a></td></tr>
-                                    <tr><td><a href="#img-project_pigeon3">project_pigeon3.jpg</a></td><td><a href="#img-project_pigeon3"><img class="thumb" src="assets/images/project_pigeon3.jpg" alt="project_pigeon3 thumbnail"></a></td></tr>
-                                    <tr><td><a href="#img-project_pigeon4">project_pigeon4.jpg</a></td><td><a href="#img-project_pigeon4"><img class="thumb" src="assets/images/project_pigeon4.jpg" alt="project_pigeon4 thumbnail"></a></td></tr>
-                                </tbody>
-                            </table>
                             <p style="text-align: center; font-size: 1.1rem; margin-bottom: 30px; color: #a8b5a0;">
-                                Rare and fascinating photographs from the war's most unusual moments
+                            Rare and fascinating photographs from the war's most unusual moments
                             </p>
+                            
+                            <!-- Compact gallery index list of filenames -->
+                            <ul class="gallery-index-list" aria-label="Gallery index list">
+                                <li><a href="#img-wojtek">Wojtek — soldier bear</a></li>
+                                <li><a href="#img-wojtek2">Wojtek with soldiers</a></li>
+                                <li><a href="#img-nightwitches">Night Witches — Po-2 biplanes</a></li>
+                                <li><a href="#img-nightwitches3">Night Witches planning (1943)</a></li>
+                                <li><a href="#img-nightwitches2">Night Witches pilots</a></li>
+                                <li><a href="#img-v2_rocket">V‑2 rocket on launch pad</a></li>
+                                <li><a href="#img-v2_rocket2">V‑2 in flight</a></li>
+                                <li><a href="#img-v2_rocket3">V‑2 technicians</a></li>
+                                <li><a href="#img-ghost_army">Ghost Army soldiers</a></li>
+                                <li><a href="#img-ghost_army2">Inflatable tank setup</a></li>
+                                <li><a href="#img-bat_bombs2">Bat Bomb test facility</a></li>
+                                <li><a href="#img-bat_bombs3">Prepared bats for Project X‑Ray</a></li>
+                                <li><a href="#img-bat_bombs">Armed bat (illustration)</a></li>
+                                <li><a href="#img-habakkuk">Habakkuk prototype</a></li>
+                                <li><a href="#img-habakkuk3">Habakkuk schematics</a></li>
+                                <li><a href="#img-project_pigeon">Project Pigeon system</a></li>
+                                <li><a href="#img-project_pigeon2">Pigeon training chamber</a></li>
+                                <li><a href="#img-project_pigeon3">Pigeons pecking at screen</a></li>
+                                <li><a href="#img-project_pigeon4">Pigeons being conditioned</a></li>
+                            </ul>
+
                             
                             <div class="fact-grid">
                                 <div class="fact-card">
